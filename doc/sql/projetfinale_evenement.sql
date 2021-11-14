@@ -28,7 +28,7 @@ CREATE TABLE `evenement` (
   `Location` varchar(45) NOT NULL,
   `Date` varchar(45) NOT NULL,
   `Description` varchar(45) DEFAULT NULL,
-  `UserId` varchar(45) NOT NULL,
+  `UserId` int (45) NOT NULL,
   PRIMARY KEY (`EventId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
