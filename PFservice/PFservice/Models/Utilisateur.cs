@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace PFservice.Models
 {
-    public class Utilisateur
+    public partial class Utilisateur
     {
-        [Required]
-        public int UserId { get; set; }
-        [Required]
-        public string Username { get; set; }
-        [Required]
-        public string Password { get; set; }
-        [Required]
+        public Utilisateur()
+        {
+            Commentaires = new HashSet<Commentaire>();
+            Evenements = new HashSet<Evenement>();
+            Utilisateurevenements = new HashSet<Utilisateurevenement>();
+        }
+
+        public int IdUtilisateur { get; set; }
+        public string NomUtilisateur { get; set; }
+        public string MotDePasse { get; set; }
         public string Courriel { get; set; }
         public string Telephone { get; set; }
-        [Required]
         public DateTime DateCreation { get; set; }
 
-        public ICollection<Commentaire> Commentaires { get; set; }
-        public ICollection<Evenement> Evenements { get; set; }
+        public virtual ICollection<Commentaire> Commentaires { get; set; }
+        public virtual ICollection<Evenement> Evenements { get; set; }
+        public virtual ICollection<Utilisateurevenement> Utilisateurevenements { get; set; }
     }
 }
