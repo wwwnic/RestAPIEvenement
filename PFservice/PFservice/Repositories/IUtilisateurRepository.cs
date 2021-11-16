@@ -9,7 +9,7 @@ namespace PFservice.Repositories
     public interface IUtilisateurRepository
     {
         Task<IEnumerable<Utilisateur>> GetAllUtilisateurs();
-        //Methode recherche tous les utilisateurs qui ont un nom semblables. Return all users with matching strings.
+        //Methode recherche tous les utilisateurs qui ont un nom semblable.
         Task<IEnumerable<Utilisateur>> GetAllUtilisateursByNom(string nom);
         Task<Utilisateur> GetById(int id);
         Task<Utilisateur> Create(Utilisateur u);

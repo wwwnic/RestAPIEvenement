@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -21,8 +22,11 @@ namespace PFservice.Models
         public string Telephone { get; set; }
         public DateTime DateCreation { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Commentaire> Commentaires { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Evenement> Evenements { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Utilisateurevenement> Utilisateurevenements { get; set; }
     }
 }

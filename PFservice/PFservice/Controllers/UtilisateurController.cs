@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PFservice.Models;
+using PFservice.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,21 @@ namespace PFservice.Controllers
     public class UtilisateurController : ControllerBase
     {
 
+        private readonly IUtilisateurRepository _urepo;
+        private readonly IEvenementRepository _erepo;
+
+        public UtilisateurController(IUtilisateurRepository urepo,IEvenementRepository erepo)
+        {
+            _urepo = urepo;
+            _erepo = erepo;
+        }
+
+
         // GET: api/<UtilisateurController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Utilisateur>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _urepo.GetAllUtilisateurs();
         }
 
         // GET api/<UtilisateurController>/5

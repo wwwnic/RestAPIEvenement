@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using PFservice.Models;
+using PFservice.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace PFservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ProjetEvenementsContext>(o=>o.UseMySQL("server=localhost;user id=root;password=root;persistsecurityinfo=True;allowpublickeyretrieval=True;sslmode=None;port=3308;database=projetevenements"));
+            services.AddScoped(typeof(IUtilisateurRepository), typeof(UtilisateurRepository));
+            services.AddScoped(typeof(IEvenementRepository), typeof(EvenementRepository));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

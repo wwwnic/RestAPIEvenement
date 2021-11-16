@@ -15,6 +15,7 @@ namespace PFservice.Models
         public ProjetEvenementsContext(DbContextOptions<ProjetEvenementsContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public virtual DbSet<Commentaire> Commentaires { get; set; }
