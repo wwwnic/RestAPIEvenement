@@ -32,34 +32,36 @@ namespace PFservice.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var evenementDel = _context.Evenements.Find(id);
+            _context.Evenements.Remove(evenementDel);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Evenement>> GetAllEvenements()
+        public async Task<IEnumerable<Evenement>> GetAllEvenements()
         {
-            throw new NotImplementedException();
+            return await _context.Evenements.ToListAsync();
         }
 
-        public Task<Evenement> GetEvenementParId(int id)
+        public async Task<Evenement> GetEvenementParId(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Evenements.FindAsync(id);
         }
 
-        public Task<IEnumerable<Evenement>> GetEvenementsParDateRecente()
+        public async Task<IEnumerable<Evenement>> GetEvenementsParDateRecente()
         {
-            throw new NotImplementedException();
+            return await _context.Evenements.OrderByDescending(e => e.Date.Value).ToListAsync();
         }
 
-        public Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(Utilisateur u)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(Utilisateur u)
         {
-            throw new NotImplementedException();
+            return await _context.Evenements.Where(e => e.IdOrganisateur == u.IdUtilisateur).ToListAsync();
         }
 
-        public Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u)
         {
-            throw new NotImplementedException();
+            return await _context.Utilisateurevenements.Where(u => u.IdUtilisateur == u.IdUtilisateur).Select(ue => ue.IdEvenementNavigation).ToListAsync();
         }
 
         //https://stackoverflow.com/a/22123210/17406108
@@ -85,9 +87,10 @@ namespace PFservice.Repositories
             return await query.ToListAsync();
         }
 
-        public Task Update(Evenement e)
+        public async Task Update(Evenement e)
         {
-            throw new NotImplementedException();
+            _context.Evenements.Update(e);
+            await _context.SaveChangesAsync();
         }
     }
 }

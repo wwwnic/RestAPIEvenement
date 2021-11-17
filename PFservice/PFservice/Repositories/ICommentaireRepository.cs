@@ -8,9 +8,9 @@ namespace PFservice.Repositories
 {
     public interface ICommentaireRepository
     {
-        Task<IEnumerable<Commentaire>> GetCommentairesParEvenement();
+        Task<IEnumerable<Commentaire>> GetCommentairesParEvenement(Evenement e);
         Task Create(Commentaire c);
-        Task Delete(Commentaire c);
+        Task Delete(int id);
         Task Update(Commentaire c);
     }
 }

@@ -32,20 +32,25 @@ namespace PFservice.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task Delete(Commentaire c)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var commentaireDel = _context.Commentaires.Find(id);
+            _context.Commentaires.Remove(commentaireDel);
+            await _context.SaveChangesAsync();
         }
 
         // Trier les commentaires par date (plus vieux au plus récent)
-        public Task<IEnumerable<Commentaire>> GetCommentairesParEvenement()
+        public async Task<IEnumerable<Commentaire>> GetCommentairesParEvenement(Evenement e)
         {
-            throw new NotImplementedException();
+            return await _context.Commentaires.Where(c => c.IdEvenement == e.IdEvenement)
+                .OrderBy(c => c.Date.Value)
+                .ToListAsync();
         }
 
-        public Task Update(Commentaire c)
+        public async Task Update(Commentaire c)
         {
-            throw new NotImplementedException();
+            _context.Commentaires.Update(c);
+            await _context.SaveChangesAsync();
         }
     }
 }
