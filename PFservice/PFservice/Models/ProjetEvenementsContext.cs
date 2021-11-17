@@ -95,7 +95,9 @@ namespace PFservice.Models
                     .HasMaxLength(50)
                     .HasColumnName("location");
 
-                entity.Property(e => e.NomEvenement).HasColumnName("nomEvenement");
+                entity.Property(e => e.NomEvenement)
+                    .HasMaxLength(50)
+                    .HasColumnName("nomEvenement");
 
                 entity.HasOne(d => d.IdOrganisateurNavigation)
                     .WithMany(p => p.Evenements)

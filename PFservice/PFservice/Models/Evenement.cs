@@ -14,7 +14,7 @@ namespace PFservice.Models
         }
 
         public int IdEvenement { get; set; }
-        public int NomEvenement { get; set; }
+        public string NomEvenement { get; set; }
         public string Location { get; set; }
         public DateTime? Date { get; set; }
         public int IdOrganisateur { get; set; }
