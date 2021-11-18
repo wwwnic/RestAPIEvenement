@@ -26,17 +26,23 @@ namespace PFservice.Controllers
 
 
         // GET: api/<UtilisateurController>
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IEnumerable<Utilisateur>> Get()
         {
             return await _urepo.GetAllUtilisateurs();
         }
 
         // GET api/<UtilisateurController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("GetById/{id}")]
+        public async Task<Utilisateur> GetUserById(int id)
         {
-            return "value";
+            return await _urepo.GetUtilisateurParId(id);
+        }
+
+        [HttpGet("GetByName")]
+        public async Task<IEnumerable<Utilisateur>> GetByName(string name)
+        {
+            return await _urepo.GetUtilisateursParNom(name);
         }
 
         // POST api/<UtilisateurController>
@@ -47,6 +53,12 @@ namespace PFservice.Controllers
             await _urepo.Create(u);
         }
 
+        [HttpPost("Login")]
+        public async Task<Utilisateur> Post(string userName, string password)
+        {
+            return await _urepo.GetUtilisateurLogin(userName, password);
+        }
+
         // PUT api/<UtilisateurController>/5
         [HttpPut("Update")]
         public async Task UpdateUtilisateur([FromBody] Utilisateur utilisateur)
@@ -55,10 +67,22 @@ namespace PFservice.Controllers
         }
 
         // DELETE api/<UtilisateurController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task Delete(int id)
         {
             await _urepo.Delete(id);
+        }
+
+        [HttpPost("NewUtilisateurEvenement")]
+        public async Task NewUtilisateurEvenement([FromForm] Utilisateur u, Evenement e)
+        {
+            await _urepo.CreateUtilisateurEvenement(u, e);
+        }
+
+        [HttpDelete("DeleteUtilisateurEvenement")]
+        public async Task DeleteUtilisateurEvenement(Utilisateur u, Evenement e )
+        {
+            await _urepo.DeleteUtilisateurEvenement(u, e);
         }
     }
 }
