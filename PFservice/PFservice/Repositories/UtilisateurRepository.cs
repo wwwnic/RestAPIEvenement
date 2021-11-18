@@ -15,9 +15,11 @@ namespace PFservice.Repositories
         public UtilisateurRepository(ProjetEvenementsContext context) 
         {
             _context = context;
+            
             if (context.Utilisateurs.Count() > 0)
             {
                 id = _context.Utilisateurs.AsEnumerable().Last().IdUtilisateur;
+                _context.ChangeTracker.Clear();
             } 
             else
             {
@@ -64,7 +66,7 @@ namespace PFservice.Repositories
 
         public async Task Update(Utilisateur u)
         {
-            _context.Utilisateurs.Update(u);
+            _context.Update(u);
             await _context.SaveChangesAsync();
         }
 

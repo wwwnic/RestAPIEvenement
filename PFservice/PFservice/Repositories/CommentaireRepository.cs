@@ -18,6 +18,7 @@ namespace PFservice.Repositories
             if (_context.Commentaires.Count() > 0)
             {
                 id = _context.Commentaires.AsEnumerable().Last().IdCommentaire;
+                _context.ChangeTracker.Clear();
             }
             else
             {

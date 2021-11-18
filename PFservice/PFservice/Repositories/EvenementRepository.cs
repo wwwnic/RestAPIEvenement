@@ -18,6 +18,7 @@ namespace PFservice.Repositories
             if (_context.Evenements.Count() > 0)
             {
                 id = _context.Evenements.AsEnumerable().Last().IdEvenement;
+                _context.ChangeTracker.Clear();
             }
             else
             {

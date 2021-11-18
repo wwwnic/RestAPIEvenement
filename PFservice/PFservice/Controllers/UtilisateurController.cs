@@ -40,21 +40,25 @@ namespace PFservice.Controllers
         }
 
         // POST api/<UtilisateurController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("New")]
+        public async Task Post([FromBody] Utilisateur u)
         {
+            u.DateCreation = DateTime.Now.Date;
+            await _urepo.Create(u);
         }
 
         // PUT api/<UtilisateurController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("Update")]
+        public async Task UpdateUtilisateur([FromBody] Utilisateur utilisateur)
         {
+            await _urepo.Update(utilisateur);
         }
 
         // DELETE api/<UtilisateurController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            await _urepo.Delete(id);
         }
     }
 }
