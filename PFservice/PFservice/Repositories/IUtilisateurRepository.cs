@@ -11,6 +11,7 @@ namespace PFservice.Repositories
         Task<IEnumerable<Utilisateur>> GetAllUtilisateurs();
         Task<IEnumerable<Utilisateur>> GetUtilisateursParNom(string nom);
         Task<Utilisateur> GetUtilisateurParId(int id);
+        Task<Utilisateur> GetUtilisateurLogin(string nom, string motdepasse);
         Task Create(Utilisateur u);
         Task Update(Utilisateur u);
         Task Delete(int id);
