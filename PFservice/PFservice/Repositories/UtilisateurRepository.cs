@@ -10,21 +10,31 @@ namespace PFservice.Repositories
     public class UtilisateurRepository : IUtilisateurRepository
     {
         private readonly ProjetEvenementsContext _context;
+        private int id;
 
-        public UtilisateurRepository(ProjetEvenementsContext context) {
-            _context = context;
-        }
-        public async Task<Utilisateur> Create(Utilisateur u)
+        public UtilisateurRepository(ProjetEvenementsContext context) 
         {
+            _context = context;
+            if (context.Utilisateurs.Count() > 0)
+            {
+                id = _context.Utilisateurs.AsEnumerable().Last().IdUtilisateur;
+            } 
+            else
+            {
+                id = 0;
+            }
+        }
+
+        public async Task Create(Utilisateur u)
+        {
+            u.IdUtilisateur = id + 1;
             _context.Utilisateurs.Add(u);
             await _context.SaveChangesAsync();
-            return u;
-            //throw new NotImplementedException();
         }
 
         public async Task Delete(int id)
         {
-            var utilisateurDel = await _context.Utilisateurs.FindAsync(id);
+            var utilisateurDel = _context.Utilisateurs.Find(id);
             _context.Utilisateurs.Remove(utilisateurDel);
             await _context.SaveChangesAsync();
         }
@@ -34,32 +44,50 @@ namespace PFservice.Repositories
             return await _context.Utilisateurs.ToListAsync();
         }
 
-        public async Task<IEnumerable<Utilisateur>> GetAllUtilisateursByNom(string nom)
+        public async Task<IEnumerable<Utilisateur>> GetUtilisateursParNom(string nom)
         {
-            List<Utilisateur> utilisateurs = _context.Utilisateurs.ToList();
-            List<Utilisateur> utilisateurFiltre = new  List<Utilisateur>();
-            foreach(Utilisateur u in utilisateurs)
-            {
-                if (u.NomUtilisateur.StartsWith(nom)) 
-                {
-                    utilisateurFiltre.Add(u);
-                }
-            }
-
-            return utilisateurFiltre;
-
+            return await _context.Utilisateurs
+                .Where(u => u.NomUtilisateur.Contains(nom))
+                .ToListAsync();
         }
 
-        public async Task<Utilisateur> GetById(int id)
+        public async Task<Utilisateur> GetUtilisateurLogin(string nom,string motdepasse)
+        {
+            return await _context.Utilisateurs.Where(u => u.NomUtilisateur.Equals(nom) &&
+            u.MotDePasse.Equals(motdepasse)).FirstAsync();
+        }
+
+        public async Task<Utilisateur> GetUtilisateurParId(int id)
         {
             return await _context.Utilisateurs.FindAsync(id);
         }
 
         public async Task Update(Utilisateur u)
         {
-            //_context.Entry(Utilisateur).State = EntityState.Modified;
-            //await _context.Utilisateurs.SaveChangesAsync();
+            _context.Utilisateurs.Update(u);
+            await _context.SaveChangesAsync();
+        }
 
+        public async Task CreateUtilisateurEvenement(Utilisateur u,Evenement e)
+        {
+            var ue = new Utilisateurevenement();
+            ue.IdUtilisateur = u.IdUtilisateur;
+            ue.IdEvenement = e.IdEvenement;
+            _context.Utilisateurevenements.Add(ue);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUtilisateurEvenement(Utilisateur u, Evenement e)
+        {
+            var ue = _context.Utilisateurevenements.Find(u.IdUtilisateur, e.IdEvenement);
+            _context.Utilisateurevenements.Remove(ue);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Utilisateur> GetUtilisateurDansEvenement(Utilisateur u, Evenement e)
+        {
+            var ue = _context.Utilisateurevenements.Find(u.IdUtilisateur, e.IdEvenement);
+            return await _context.Utilisateurs.FindAsync(ue.IdUtilisateur);
         }
     }
 }

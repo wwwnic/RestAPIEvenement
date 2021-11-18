@@ -62,12 +62,14 @@ namespace PFservice.Models
                 entity.HasOne(d => d.IdEvenementNavigation)
                     .WithMany(p => p.Commentaires)
                     .HasForeignKey(d => d.IdEvenement)
-                    .HasConstraintName("FK_EvenComm");
+                    .HasConstraintName("FK_EvenComm")
+                    .OnDelete(DeleteBehavior.SetNull);
 
                 entity.HasOne(d => d.IdUtilisateurNavigation)
                     .WithMany(p => p.Commentaires)
                     .HasForeignKey(d => d.IdUtilisateur)
-                    .HasConstraintName("FK_UtilComm");
+                    .HasConstraintName("FK_UtilComm")
+                    .OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Evenement>(entity =>
@@ -95,11 +97,14 @@ namespace PFservice.Models
                     .HasMaxLength(50)
                     .HasColumnName("location");
 
-                entity.Property(e => e.NomEvenement).HasColumnName("nomEvenement");
+                entity.Property(e => e.NomEvenement)
+                    .HasMaxLength(50)
+                    .HasColumnName("nomEvenement");
 
                 entity.HasOne(d => d.IdOrganisateurNavigation)
                     .WithMany(p => p.Evenements)
                     .HasForeignKey(d => d.IdOrganisateur)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_organisateur");
             });
 
@@ -153,11 +158,13 @@ namespace PFservice.Models
                 entity.HasOne(d => d.IdEvenementNavigation)
                     .WithMany(p => p.Utilisateurevenements)
                     .HasForeignKey(d => d.IdEvenement)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Even");
 
                 entity.HasOne(d => d.IdUtilisateurNavigation)
                     .WithMany(p => p.Utilisateurevenements)
                     .HasForeignKey(d => d.IdUtilisateur)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Util");
             });
 

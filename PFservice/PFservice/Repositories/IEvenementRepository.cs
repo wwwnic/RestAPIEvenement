@@ -9,12 +9,12 @@ namespace PFservice.Repositories
     public interface IEvenementRepository
     {
         Task<IEnumerable<Evenement>> GetAllEvenements();
-        //Methode recherche tous les utilisateurs qui ont un nom semblables. Return all users with matching strings.
-        Task<IEnumerable<Evenement>> GetAllUtilisateursByNom();
-        Task<IEnumerable<Evenement>> GetAllEvenementsByUserId();
-        Task<Evenement> GetEvenementById(int id);
-        Task<Utilisateur> GetEvenemntByNom(string nom);
-        Task<Utilisateur> CreateEvenement(Evenement e);
+        Task<Evenement> GetEvenementParId(int id);
+        Task<IEnumerable<Evenement>> GetEvenementsParRecherche(string nom,string mois,string location,string organisateur);
+        Task<IEnumerable<Evenement>> GetEvenementsParDateRecente();
+        Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u);
+        Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(Utilisateur u);
+        Task Create(Evenement e);
         Task Update(Evenement e);
         Task Delete(int id);
     }
