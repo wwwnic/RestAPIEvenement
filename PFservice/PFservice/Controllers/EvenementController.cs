@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PFservice.Models;
+using PFservice.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,21 @@ namespace PFservice.Controllers
     [ApiController]
     public class EvenementController : ControllerBase
     {
+
+        private readonly IUtilisateurRepository _urepo;
+        private readonly IEvenementRepository _erepo;
+
+        public EvenementController(IUtilisateurRepository urepo, IEvenementRepository erepo)
+        {
+            _urepo = urepo;
+            _erepo = erepo;
+        }
+
         // GET: api/<EvenementController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Evenement>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _erepo.GetEvenementsParDateRecente();
         }
 
         // GET api/<EvenementController>/5

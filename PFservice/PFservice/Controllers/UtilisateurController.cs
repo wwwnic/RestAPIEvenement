@@ -74,15 +74,15 @@ namespace PFservice.Controllers
         }
 
         [HttpPost("NewUtilisateurEvenement")]
-        public async Task NewUtilisateurEvenement([FromForm] Utilisateur u, Evenement e)
+        public async Task NewUtilisateurEvenement([FromBody] Utilisateurevenement u)
         {
-            await _urepo.CreateUtilisateurEvenement(u, e);
+            await _urepo.CreateUtilisateurEvenement(u);
         }
 
         [HttpDelete("DeleteUtilisateurEvenement")]
-        public async Task DeleteUtilisateurEvenement(Utilisateur u, Evenement e )
+        public async Task DeleteUtilisateurEvenement([FromBody] Utilisateurevenement u)
         {
-            await _urepo.DeleteUtilisateurEvenement(u, e);
+            await _urepo.DeleteUtilisateurEvenement(u);
         }
     }
 }

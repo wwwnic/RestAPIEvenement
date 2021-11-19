@@ -70,26 +70,21 @@ namespace PFservice.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task CreateUtilisateurEvenement(Utilisateur u,Evenement e)
+        public async Task CreateUtilisateurEvenement(Utilisateurevenement u)
         {
-            var ue = new Utilisateurevenement();
-            ue.IdUtilisateur = u.IdUtilisateur;
-            ue.IdEvenement = e.IdEvenement;
-            _context.Utilisateurevenements.Add(ue);
+            _context.Utilisateurevenements.Add(u);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteUtilisateurEvenement(Utilisateur u, Evenement e)
+        public async Task DeleteUtilisateurEvenement(Utilisateurevenement u)
         {
-            var ue = _context.Utilisateurevenements.Find(u.IdUtilisateur, e.IdEvenement);
-            _context.Utilisateurevenements.Remove(ue);
+            _context.Utilisateurevenements.Remove(u);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Utilisateur> GetUtilisateurDansEvenement(Utilisateur u, Evenement e)
+        public async Task<Utilisateur> GetUtilisateurDansEvenement(Utilisateurevenement u)
         {
-            var ue = _context.Utilisateurevenements.Find(u.IdUtilisateur, e.IdEvenement);
-            return await _context.Utilisateurs.FindAsync(ue.IdUtilisateur);
+            return await _context.Utilisateurs.FindAsync(u.IdUtilisateur);
         }
     }
 }
