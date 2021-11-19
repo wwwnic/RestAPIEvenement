@@ -33,27 +33,31 @@ namespace PFservice.Controllers
 
         // GET api/<EvenementController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Evenement> GetEvenementParId(int id)
         {
-            return "value";
+            return await _erepo.GetEvenementParId(id);
         }
 
         // POST api/<EvenementController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task Post([FromBody] Evenement e)
         {
+            //Pas certain comment recuperer le Id du creator sans session, peut etre l'envoye par cote client
+            await _erepo.Create(e);
         }
 
         // PUT api/<EvenementController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task Update([FromBody] Evenement e)
         {
+            await _erepo.Update(e);
         }
 
         // DELETE api/<EvenementController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            await _erepo.Delete(id);
         }
     }
 }
