@@ -13,7 +13,7 @@ namespace PFservice.Repositories
         Task<IEnumerable<Evenement>> GetEvenementsParRecherche(string nom,string mois,string location,string organisateur);
         Task<IEnumerable<Evenement>> GetEvenementsParDateRecente();
         Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u);
-        Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(Utilisateur u);
+        Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(int id);
         Task Create(Evenement e);
         Task Update(Evenement e);
         Task Delete(int id);

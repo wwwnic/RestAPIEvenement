@@ -55,9 +55,9 @@ namespace PFservice.Repositories
             return await _context.Evenements.OrderByDescending(e => e.Date.Value).ToListAsync();
         }
 
-        public async Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(Utilisateur u)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(int id)
         {
-            return await _context.Evenements.Where(e => e.IdOrganisateur == u.IdUtilisateur).ToListAsync();
+            return await _context.Evenements.Where(e => e.IdOrganisateur == id).ToListAsync();
         }
 
         public async Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u)

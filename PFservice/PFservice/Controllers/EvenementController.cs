@@ -24,9 +24,31 @@ namespace PFservice.Controllers
             _erepo = erepo;
         }
 
+        [HttpGet("GetAll")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenements() {
+            return await _erepo.GetAllEvenements();
+        }
+
+        [HttpGet("GetAllEventsParOrganisateur/{id}")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParOrganisateur(int id)
+        {
+            return await _erepo.GetEvenementsParOrganisateur(id);
+        }
+
+        [HttpGet("GetEvenementsParParticipants/{id}")]
+        //A Implementer et elle n'est pas encore fonctionnel en ce moment
+        public void GetAllEvenementsParParticipants() { }
+
+        [HttpGet("GetAllEvenementsParRecherche")]
+
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParRecherche(string nom, string mois, string location, string organisateur) {
+            return await _erepo.GetEvenementsParRecherche(nom, mois, location, organisateur);
+        }
+
+
         // GET: api/<EvenementController>
-        [HttpGet]
-        public async Task<IEnumerable<Evenement>> Get()
+        [HttpGet("GetAllRecent")]
+        public async Task<IEnumerable<Evenement>> GetAllRecentEvenements()
         {
             return await _erepo.GetEvenementsParDateRecente();
         }
@@ -40,22 +62,24 @@ namespace PFservice.Controllers
 
         // POST api/<EvenementController>
         [HttpPost]
-        public async Task Post([FromBody] Evenement e)
+        public async Task CreateEvenement([FromBody] Evenement e)
         {
             //Pas certain comment recuperer le Id du creator sans session, peut etre l'envoye par cote client
             await _erepo.Create(e);
         }
 
         // PUT api/<EvenementController>/5
+
+        // A revisiter car ce n'est pas fonctionnel
         [HttpPut("{id}")]
-        public async Task Update([FromBody] Evenement e)
+        public async Task UpdateEvenement([FromBody] Evenement e)
         {
             await _erepo.Update(e);
         }
 
         // DELETE api/<EvenementController>/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task DeleteEvenement(int id)
         {
             await _erepo.Delete(id);
         }
