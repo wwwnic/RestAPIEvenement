@@ -60,13 +60,13 @@ namespace PFservice.Repositories
             return await _context.Evenements.Where(e => e.IdOrganisateur == id).ToListAsync();
         }
 
-        public async Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParParticipant(int id)
         {
-            return await _context.Utilisateurevenements.Where(u => u.IdUtilisateur == u.IdUtilisateur).Select(ue => ue.IdEvenementNavigation).ToListAsync();
+            return await _context.Utilisateurevenements.Where(u => u.IdUtilisateur == id).Select(ue => ue.IdEvenementNavigation).ToListAsync();
         }
 
         //https://stackoverflow.com/a/22123210/17406108
-        public async Task<IEnumerable<Evenement>> GetEvenementsParRecherche(string nom, string mois, string location, string organisateur)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParRecherche(string nom, string mois, string location, string nomOrganisateur)
         {
             IQueryable<Evenement> query = _context.Evenements;
             if (!string.IsNullOrEmpty(nom))
@@ -81,9 +81,9 @@ namespace PFservice.Repositories
             {
                 query = query.Where(e => e.Location.Contains(location));
             }
-            if (!string.IsNullOrEmpty(organisateur))
+            if (!string.IsNullOrEmpty(nomOrganisateur))
             {
-                query = query.Where(e => e.IdOrganisateurNavigation.NomUtilisateur.Contains(organisateur));
+                query = query.Where(e => e.IdOrganisateurNavigation.NomUtilisateur.Contains(nomOrganisateur));
             }
             return await query.ToListAsync();
         }

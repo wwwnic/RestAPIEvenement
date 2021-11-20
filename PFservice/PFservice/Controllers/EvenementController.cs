@@ -17,11 +17,13 @@ namespace PFservice.Controllers
 
         private readonly IUtilisateurRepository _urepo;
         private readonly IEvenementRepository _erepo;
+        //private readonly ICommentaireRepository _crepo;
 
-        public EvenementController(IUtilisateurRepository urepo, IEvenementRepository erepo)
+        public EvenementController(IUtilisateurRepository urepo, IEvenementRepository erepo/*, ICommentaireRepository crepo*/)
         {
             _urepo = urepo;
             _erepo = erepo;
+            //_crepo = crepo;
         }
 
         [HttpGet("GetAll")]
@@ -37,7 +39,9 @@ namespace PFservice.Controllers
 
         [HttpGet("GetEvenementsParParticipants/{id}")]
         //A Implementer et elle n'est pas encore fonctionnel en ce moment
-        public void GetAllEvenementsParParticipants() { }
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParParticipants(int id) {
+            return await _erepo.GetEvenementsParParticipant(id);
+        }
 
         [HttpGet("GetAllEvenementsParRecherche")]
 
@@ -65,6 +69,12 @@ namespace PFservice.Controllers
         public async Task CreateEvenement([FromBody] Evenement e)
         {
             //Pas certain comment recuperer le Id du creator sans session, peut etre l'envoye par cote client
+            //await _urepo.CreateUtilisateurEvenement(e.IdOrganisateur);
+
+            //Utilisateurevenement ue = new Utilisateurevenement();
+            //ue.IdEvenement = e.IdEvenement;
+            //ue.IdUtilisateur = e.IdOrganisateur;
+            //await _urepo.CreateUtilisateurEvenement(ue);
             await _erepo.Create(e);
         }
 
