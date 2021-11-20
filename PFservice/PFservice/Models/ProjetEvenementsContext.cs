@@ -47,13 +47,17 @@ namespace PFservice.Models
 
                 entity.HasIndex(e => e.IdUtilisateur, "FK_UtilComm");
 
-                entity.Property(e => e.IdCommentaire).HasColumnName("idCommentaire");
+                entity.Property(e => e.IdCommentaire)
+                    .HasColumnName("idCommentaire");
 
-                entity.Property(e => e.Date).HasColumnName("date");
+                entity.Property(e => e.Date)
+                    .HasColumnName("date");
 
-                entity.Property(e => e.IdEvenement).HasColumnName("idEvenement");
+                entity.Property(e => e.IdEvenement)
+                    .HasColumnName("idEvenement");
 
-                entity.Property(e => e.IdUtilisateur).HasColumnName("idUtilisateur");
+                entity.Property(e => e.IdUtilisateur)
+                .HasColumnName("idUtilisateur");
 
                 entity.Property(e => e.Texte)
                     .HasMaxLength(200)
@@ -83,15 +87,18 @@ namespace PFservice.Models
 
                 entity.HasIndex(e => e.IdOrganisateur, "FK_organisateur");
 
-                entity.Property(e => e.IdEvenement).HasColumnName("idEvenement");
+                entity.Property(e => e.IdEvenement)
+                    .HasColumnName("idEvenement");
 
-                entity.Property(e => e.Date).HasColumnName("date");
+                entity.Property(e => e.Date)
+                    .HasColumnName("date");
 
                 entity.Property(e => e.Description)
                     .HasMaxLength(200)
                     .HasColumnName("description");
 
-                entity.Property(e => e.IdOrganisateur).HasColumnName("idOrganisateur");
+                entity.Property(e => e.IdOrganisateur)
+                .HasColumnName("idOrganisateur");
 
                 entity.Property(e => e.Location)
                     .HasMaxLength(50)
@@ -151,9 +158,13 @@ namespace PFservice.Models
 
                 entity.HasIndex(e => e.IdUtilisateur, "FK_Util");
 
-                entity.Property(e => e.IdEvenement).HasColumnName("idEvenement");
+                //entity.HasIndex(e => e.IdEvenement, "FK_Even");
 
-                entity.Property(e => e.IdUtilisateur).HasColumnName("idUtilisateur");
+                entity.Property(e => e.IdEvenement)
+                    .HasColumnName("idEvenement");
+
+                entity.Property(e => e.IdUtilisateur)
+                    .HasColumnName("idUtilisateur");
 
                 entity.HasOne(d => d.IdEvenementNavigation)
                     .WithMany(p => p.Utilisateurevenements)
