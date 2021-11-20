@@ -14,16 +14,11 @@ namespace PFservice.Controllers
     [ApiController]
     public class EvenementController : ControllerBase
     {
-
-        private readonly IUtilisateurRepository _urepo;
         private readonly IEvenementRepository _erepo;
-        //private readonly ICommentaireRepository _crepo;
 
-        public EvenementController(IUtilisateurRepository urepo, IEvenementRepository erepo/*, ICommentaireRepository crepo*/)
+        public EvenementController( IEvenementRepository erepo)
         {
-            _urepo = urepo;
             _erepo = erepo;
-            //_crepo = crepo;
         }
 
         [HttpGet("GetAll")]
