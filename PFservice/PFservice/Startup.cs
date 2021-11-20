@@ -32,6 +32,7 @@ namespace PFservice
             services.AddDbContext<ProjetEvenementsContext>(o=>o.UseMySQL("server=localhost;user id=root;password=root;persistsecurityinfo=True;allowpublickeyretrieval=True;sslmode=None;port=3308;database=projetevenements"));
             services.AddScoped(typeof(IUtilisateurRepository), typeof(UtilisateurRepository));
             services.AddScoped(typeof(IEvenementRepository), typeof(EvenementRepository));
+            services.AddScoped(typeof(ICommentaireRepository, typeof(CommentaireRepository));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
