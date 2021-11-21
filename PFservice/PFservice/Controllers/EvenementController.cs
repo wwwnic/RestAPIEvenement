@@ -14,46 +14,73 @@ namespace PFservice.Controllers
     [ApiController]
     public class EvenementController : ControllerBase
     {
-
-        private readonly IUtilisateurRepository _urepo;
         private readonly IEvenementRepository _erepo;
 
-        public EvenementController(IUtilisateurRepository urepo, IEvenementRepository erepo)
+        public EvenementController( IEvenementRepository erepo)
         {
-            _urepo = urepo;
             _erepo = erepo;
         }
 
+        [HttpGet("GetAll")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenements() {
+            return await _erepo.GetAllEvenements();
+        }
+
+        [HttpGet("GetParOrganisateur/{id}")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParOrganisateur(int id)
+        {
+            return await _erepo.GetEvenementsParOrganisateur(id);
+        }
+
+        [HttpGet("GetParParticipant/{id}")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParParticipant(int id) {
+            return await _erepo.GetEvenementsParParticipant(id);
+        }
+
+        // Exemple url: .../api/Evenement/GetParRecherche?nom=test&mois=2021-11&location=test&organisateur=bob
+        // On ajoute les queries dans l'URL dans le client
+        [HttpGet("GetParRecherche")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParRecherche(string nom, string mois, string location, string organisateur) {
+            return await _erepo.GetEvenementsParRecherche(nom, mois, location, organisateur);
+        }
+
+
         // GET: api/<EvenementController>
-        [HttpGet]
-        public async Task<IEnumerable<Evenement>> Get()
+        [HttpGet("GetRecent")]
+        public async Task<IEnumerable<Evenement>> GetAllRecentEvenements()
         {
             return await _erepo.GetEvenementsParDateRecente();
         }
 
         // GET api/<EvenementController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Evenement> GetEvenementParId(int id)
         {
-            return "value";
+            return await _erepo.GetEvenementParId(id);
         }
 
         // POST api/<EvenementController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("New")]
+        public async Task CreateEvenement([FromBody] Evenement e)
         {
+            await _erepo.Create(e);
         }
 
         // PUT api/<EvenementController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("Update")]
+        public async Task UpdateEvenement([FromBody] Evenement e)
         {
+            await _erepo.Update(e);
         }
 
         // DELETE api/<EvenementController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("/Delete/{id}/{key}")]
+        public async Task DeleteEvenement(int id,string key)
         {
+            if (key.Equals("secret"))
+            {
+                await _erepo.Delete(id);
+            }
         }
     }
 }

@@ -16,12 +16,10 @@ namespace PFservice.Controllers
     {
 
         private readonly IUtilisateurRepository _urepo;
-        private readonly IEvenementRepository _erepo;
 
-        public UtilisateurController(IUtilisateurRepository urepo,IEvenementRepository erepo)
+        public UtilisateurController(IUtilisateurRepository urepo)
         {
             _urepo = urepo;
-            _erepo = erepo;
         }
 
 
@@ -67,20 +65,23 @@ namespace PFservice.Controllers
         }
 
         // DELETE api/<UtilisateurController>/5
-        [HttpDelete("Delete/{id}")]
-        public async Task Delete(int id)
+        [HttpDelete("Delete/{id}/{key}")]
+        public async Task Delete(int id,string key)
         {
-            await _urepo.Delete(id);
+            if (key.Equals("secret"))
+            {
+                await _urepo.Delete(id);
+            }
         }
 
-        [HttpPost("NewUtilisateurEvenement")]
-        public async Task NewUtilisateurEvenement([FromBody] Utilisateurevenement u)
+        [HttpPost("addParticipation")]
+        public async Task AddParticipation([FromBody] Utilisateurevenement u)
         {
             await _urepo.CreateUtilisateurEvenement(u);
         }
 
-        [HttpDelete("DeleteUtilisateurEvenement")]
-        public async Task DeleteUtilisateurEvenement([FromBody] Utilisateurevenement u)
+        [HttpDelete("deleteParticipation")]
+        public async Task DeleteParticipation([FromBody] Utilisateurevenement u)
         {
             await _urepo.DeleteUtilisateurEvenement(u);
         }

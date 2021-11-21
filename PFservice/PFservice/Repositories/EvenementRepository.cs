@@ -30,6 +30,12 @@ namespace PFservice.Repositories
         {
             e.IdEvenement = id + 1;
             _context.Evenements.Add(e);
+            var ue = new Utilisateurevenement
+            {
+                IdEvenement = e.IdEvenement,
+                IdUtilisateur = e.IdOrganisateur
+            };
+            _context.Utilisateurevenements.Add(ue);
             await _context.SaveChangesAsync();
         }
 
@@ -55,18 +61,18 @@ namespace PFservice.Repositories
             return await _context.Evenements.OrderByDescending(e => e.Date.Value).ToListAsync();
         }
 
-        public async Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(Utilisateur u)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(int id)
         {
-            return await _context.Evenements.Where(e => e.IdOrganisateur == u.IdUtilisateur).ToListAsync();
+            return await _context.Evenements.Where(e => e.IdOrganisateur == id).ToListAsync();
         }
 
-        public async Task<IEnumerable<Evenement>> GetEvenementsParParticipant(Utilisateur u)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParParticipant(int id)
         {
-            return await _context.Utilisateurevenements.Where(u => u.IdUtilisateur == u.IdUtilisateur).Select(ue => ue.IdEvenementNavigation).ToListAsync();
+            return await _context.Utilisateurevenements.Where(u => u.IdUtilisateur == id).Select(ue => ue.IdEvenementNavigation).ToListAsync();
         }
 
         //https://stackoverflow.com/a/22123210/17406108
-        public async Task<IEnumerable<Evenement>> GetEvenementsParRecherche(string nom, string mois, string location, string organisateur)
+        public async Task<IEnumerable<Evenement>> GetEvenementsParRecherche(string nom, string mois, string location, string nomOrganisateur)
         {
             IQueryable<Evenement> query = _context.Evenements;
             if (!string.IsNullOrEmpty(nom))
@@ -75,15 +81,16 @@ namespace PFservice.Repositories
             }
             if (!string.IsNullOrEmpty(mois))
             {
-                query = query.Where(e => e.Date.Value.ToString("YYYY-MM").Equals(mois));
+
+                query = query.Where(e => e.Date.Value.ToString().Substring(0,7).Equals(mois));
             }
             if (!string.IsNullOrEmpty(location))
             {
                 query = query.Where(e => e.Location.Contains(location));
             }
-            if (!string.IsNullOrEmpty(organisateur))
+            if (!string.IsNullOrEmpty(nomOrganisateur))
             {
-                query = query.Where(e => e.IdOrganisateurNavigation.NomUtilisateur.Contains(organisateur));
+                query = query.Where(e => e.IdOrganisateurNavigation.NomUtilisateur.Contains(nomOrganisateur));
             }
             return await query.ToListAsync();
         }

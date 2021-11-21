@@ -41,9 +41,9 @@ namespace PFservice.Repositories
         }
 
         // Trier les commentaires par date (plus vieux au plus récent)
-        public async Task<IEnumerable<Commentaire>> GetCommentairesParEvenement(Evenement e)
+        public async Task<IEnumerable<Commentaire>> GetCommentairesParEvenement(int id)
         {
-            return await _context.Commentaires.Where(c => c.IdEvenement == e.IdEvenement)
+            return await _context.Commentaires.Where(c => c.IdEvenement == id)
                 .OrderBy(c => c.Date.Value)
                 .ToListAsync();
         }

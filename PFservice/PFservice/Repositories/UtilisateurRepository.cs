@@ -55,8 +55,19 @@ namespace PFservice.Repositories
 
         public async Task<Utilisateur> GetUtilisateurLogin(string nom,string motdepasse)
         {
-            return await _context.Utilisateurs.Where(u => u.NomUtilisateur.Equals(nom) &&
-            u.MotDePasse.Equals(motdepasse)).FirstAsync();
+            IQueryable<Utilisateur> query = _context.Utilisateurs.Where(u => u.NomUtilisateur.Equals(nom) &&
+            u.MotDePasse.Equals(motdepasse));
+            if (query.Any())
+            {
+                return await query.FirstOrDefaultAsync();
+            } else
+            {
+                Utilisateur nullUtilisateur = new Utilisateur
+                {
+                    IdUtilisateur = 0
+                };
+                return nullUtilisateur;
+            }
         }
 
         public async Task<Utilisateur> GetUtilisateurParId(int id)
