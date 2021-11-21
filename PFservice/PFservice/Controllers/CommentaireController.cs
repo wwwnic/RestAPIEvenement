@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PFservice.Models;
 using PFservice.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -24,31 +22,33 @@ namespace PFservice.Controllers
             _crepo = crepo;
         }
 
-        [HttpGet("GetByEvenement/{idEvenement}")]
-        public async Task<Commentaire> GetAllCommentairesParEvenement(Evenement e)
+        [HttpGet("GetByEvenement/{id}")]
+        public async Task<IEnumerable<Commentaire>> GetAllCommentairesParEvenement(int id)
         {
-            return (Commentaire) await _crepo.GetCommentairesParEvenement(e);
+            return await _crepo.GetCommentairesParEvenement(id);
         }
 
-        [HttpPost]
+        [HttpPost("New")]
         public async Task CreateCommentaire([FromBody] Commentaire c)
         {
             await _crepo.Create(c);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public async Task UpdateCommentaire([FromBody] Commentaire c)
         {
-             await _crepo.Update(c);
+            await _crepo.Update(c);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}/{key}")]
 
-        public async Task DeleteCommentaire([FromBody] int id)
+        public async Task DeleteCommentaire(int id,string key)
         {
-            await _crepo.Delete(id);
-        }
-
+            if (key.Equals("secret"))
+            {
+                await _crepo.Delete(id);
+            }
         }
     }
+}
 

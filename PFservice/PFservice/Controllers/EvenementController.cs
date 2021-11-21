@@ -26,27 +26,27 @@ namespace PFservice.Controllers
             return await _erepo.GetAllEvenements();
         }
 
-        [HttpGet("GetAllEventsParOrganisateur/{id}")]
+        [HttpGet("GetParOrganisateur/{id}")]
         public async Task<IEnumerable<Evenement>> GetAllEvenementsParOrganisateur(int id)
         {
             return await _erepo.GetEvenementsParOrganisateur(id);
         }
 
-        [HttpGet("GetEvenementsParParticipants/{id}")]
-        //A Implementer et elle n'est pas encore fonctionnel en ce moment
-        public async Task<IEnumerable<Evenement>> GetAllEvenementsParParticipants(int id) {
+        [HttpGet("GetParParticipant/{id}")]
+        public async Task<IEnumerable<Evenement>> GetAllEvenementsParParticipant(int id) {
             return await _erepo.GetEvenementsParParticipant(id);
         }
 
-        [HttpGet("GetAllEvenementsParRecherche")]
-
+        // Exemple url: .../api/Evenement/GetParRecherche?nom=test&mois=2021-11&location=test&organisateur=bob
+        // On ajoute les queries dans l'URL dans le client
+        [HttpGet("GetParRecherche")]
         public async Task<IEnumerable<Evenement>> GetAllEvenementsParRecherche(string nom, string mois, string location, string organisateur) {
             return await _erepo.GetEvenementsParRecherche(nom, mois, location, organisateur);
         }
 
 
         // GET: api/<EvenementController>
-        [HttpGet("GetAllRecent")]
+        [HttpGet("GetRecent")]
         public async Task<IEnumerable<Evenement>> GetAllRecentEvenements()
         {
             return await _erepo.GetEvenementsParDateRecente();
@@ -60,33 +60,27 @@ namespace PFservice.Controllers
         }
 
         // POST api/<EvenementController>
-        [HttpPost]
+        [HttpPost("New")]
         public async Task CreateEvenement([FromBody] Evenement e)
         {
-            //Pas certain comment recuperer le Id du creator sans session, peut etre l'envoye par cote client
-            //await _urepo.CreateUtilisateurEvenement(e.IdOrganisateur);
-
-            //Utilisateurevenement ue = new Utilisateurevenement();
-            //ue.IdEvenement = e.IdEvenement;
-            //ue.IdUtilisateur = e.IdOrganisateur;
-            //await _urepo.CreateUtilisateurEvenement(ue);
             await _erepo.Create(e);
         }
 
         // PUT api/<EvenementController>/5
-
-        // A revisiter car ce n'est pas fonctionnel
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public async Task UpdateEvenement([FromBody] Evenement e)
         {
             await _erepo.Update(e);
         }
 
         // DELETE api/<EvenementController>/5
-        [HttpDelete("{id}")]
-        public async Task DeleteEvenement(int id)
+        [HttpDelete("/Delete/{id}/{key}")]
+        public async Task DeleteEvenement(int id,string key)
         {
-            await _erepo.Delete(id);
+            if (key.Equals("secret"))
+            {
+                await _erepo.Delete(id);
+            }
         }
     }
 }

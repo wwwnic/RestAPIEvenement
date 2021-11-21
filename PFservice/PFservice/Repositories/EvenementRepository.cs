@@ -30,6 +30,12 @@ namespace PFservice.Repositories
         {
             e.IdEvenement = id + 1;
             _context.Evenements.Add(e);
+            var ue = new Utilisateurevenement
+            {
+                IdEvenement = e.IdEvenement,
+                IdUtilisateur = e.IdOrganisateur
+            };
+            _context.Utilisateurevenements.Add(ue);
             await _context.SaveChangesAsync();
         }
 
@@ -75,7 +81,8 @@ namespace PFservice.Repositories
             }
             if (!string.IsNullOrEmpty(mois))
             {
-                query = query.Where(e => e.Date.Value.ToString("YYYY-MM").Equals(mois));
+
+                query = query.Where(e => e.Date.Value.ToString().Substring(0,7).Equals(mois));
             }
             if (!string.IsNullOrEmpty(location))
             {
