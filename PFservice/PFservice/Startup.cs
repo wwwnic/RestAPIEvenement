@@ -61,6 +61,8 @@ namespace PFservice
 
             app.UseCors("CorsPolicy");
 
+            app.UseStaticFiles();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

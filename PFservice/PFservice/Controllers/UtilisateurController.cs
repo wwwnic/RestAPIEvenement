@@ -52,9 +52,9 @@ namespace PFservice.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<Utilisateur> Post(string userName, string password)
+        public async Task<Utilisateur> Login([FromBody]Utilisateur u)
         {
-            return await _urepo.GetUtilisateurLogin(userName, password);
+            return await _urepo.GetUtilisateurLogin(u.NomUtilisateur, u.MotDePasse);
         }
 
         // PUT api/<UtilisateurController>/5

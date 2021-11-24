@@ -81,7 +81,6 @@ namespace PFservice.Repositories
             }
             if (!string.IsNullOrEmpty(mois))
             {
-
                 query = query.Where(e => e.Date.Value.ToString().Substring(0,7).Equals(mois));
             }
             if (!string.IsNullOrEmpty(location))
