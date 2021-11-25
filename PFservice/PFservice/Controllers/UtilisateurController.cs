@@ -31,7 +31,7 @@ namespace PFservice.Controllers
         }
 
         // GET api/<UtilisateurController>/5
-        [HttpGet("GetById/{id}")]
+        [HttpGet("GetById")]
         public async Task<Utilisateur> GetUserById(int id)
         {
             return await _urepo.GetUtilisateurParId(id);

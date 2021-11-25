@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -14,7 +13,9 @@ namespace PFservice.Models
         public DateTime? Date { get; set; }
         public string Texte { get; set; }
 
+        [JsonIgnore]
         public virtual Evenement IdEvenementNavigation { get; set; }
+        [JsonIgnore]
         public virtual Utilisateur IdUtilisateurNavigation { get; set; }
     }
 }

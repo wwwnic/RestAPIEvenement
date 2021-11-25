@@ -14,7 +14,7 @@ namespace PFservice.Repositories
         Task<IEnumerable<Evenement>> GetEvenementsParDateRecente();
         Task<IEnumerable<Evenement>> GetEvenementsParParticipant(int id);// Utilisateur u
         Task<IEnumerable<Evenement>> GetEvenementsParOrganisateur(int id);//Utilisateur u);
-        Task Create(Evenement e);
+        Task<Evenement> Create(Evenement e);
         Task Update(Evenement e);
         Task Delete(int id);
     }
