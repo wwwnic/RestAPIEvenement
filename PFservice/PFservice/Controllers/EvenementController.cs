@@ -53,7 +53,7 @@ namespace PFservice.Controllers
         }
 
         // GET api/<EvenementController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public async Task<Evenement> GetEvenementParId(int id)
         {
             return await _erepo.GetEvenementParId(id);
