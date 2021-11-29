@@ -74,7 +74,7 @@ namespace PFservice.Controllers
         }
 
         // DELETE api/<EvenementController>/5
-        [HttpDelete("/Delete/{id}/{key}")]
+        [HttpDelete("Delete/{id}/{key}")]
         public async Task DeleteEvenement(int id,string key)
         {
             if (key.Equals("secret"))

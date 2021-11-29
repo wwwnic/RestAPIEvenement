@@ -1,0 +1,10 @@
+<section class="p-5">
+  <p>utilisateur works!</p>
+  <!-- <p *ngFor="let utilisateur of utilisateurs"> {{utilisateur.idUtilisateur}}</p> -->
+  <!-- <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur"> -->
+
+
+  <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur"
+    (consult)="consulterUtilisateur($event)" (update)="updateUtilisateur($event)" (delete)="deleteUtilisateur($event)">
+  </app-utilisateur-item>
+</section>

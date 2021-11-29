@@ -1,18 +1,4 @@
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    }
-</style>
+<app-nav (logoutClick)="removeUtilisateur()">
+</app-nav>
 
-<div class="bg-dark p-5 rounded-3 m-3 text-center">
-  <h1 class="text-light">Bienvenue sur le client d'administration</h1>
-</div>
-
-<div class="content text-center">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

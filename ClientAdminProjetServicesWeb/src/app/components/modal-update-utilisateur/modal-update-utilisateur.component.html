@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="updateLabel">Update</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeUpdateModal()"></button>
+</div>
+<div class="modal-body">
+  <p class="lead">Update Form (everything must be filled)</p>
+  <form [formGroup]="updateUtilisateurForm" (ngSubmit)="onUpdate()">
+    <div class="mb-3">
+      <label for="idUtilisateur" class="col-form-label">
+        Id:
+      </label>
+      <input type="text" class="form-control" id="idUtilisateur" formControlName="idUtilisateur"
+        placeholder="{{user.idUtilisateur}}" value="{{user.idUtilisateur}}" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="nomUtilisateur" class="col-form-label">Nom Utilisateur:</label>
+      <input type="text" class="form-control" id="nomUtilisateur" formControlName="nomUtilisateur" />
+    </div>
+    <div class="mb-3">
+      <label for="motDePasse" class="col-form-label">Password:</label>
+      <input type="password" class="form-control" id="motDePasse" formControlName="motDePasse"
+        value="{{user.motDePasse}}" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="courriel" class="col-form-label">Courriel:</label>
+      <input type="email" class="form-control" id="courriel" formControlName="courriel" />
+    </div>
+    <div class="mb-3">
+      <label for="telephone" class="col-form-label">Telephone:</label>
+      <input type="text" class="form-control" id="telephone" formControlName="telephone" />
+    </div>
+    <div class="mb-3">
+      <label for="dateCreation" class="col-form-label">Date Creation:</label>
+      <input type="datetime" class="form-control" id="dateCreation" formControlName="dateCreation"
+        placeholder="{{user.dateCreation}}" value="{{user.dateCreation}}" readonly />
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+
+  <app-button text="Update" (btnClick)="onUpdate()"></app-button>
+</div>
