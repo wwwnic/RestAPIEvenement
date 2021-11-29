@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="updateLabel">Update Evenement</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeUpdateModal()"></button>
+</div>
+<div class="modal-body">
+  <p class="lead">Update Form (everything must be filled)</p>
+  <form [formGroup]="updateEvenementForm" (ngSubmit)="onUpdate()">
+    <div class="mb-3">
+      <label for="idEvenement" class="col-form-label">
+        Id Evenement:
+      </label>
+      <input type="text" class="form-control" id="idEvenement" formControlName="idEvenement"
+        placeholder="{{evenement.idEvenement}}" value="{{evenement.idEvenement}}" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="nomEvenement" class="col-form-label">Nom Evenement:</label>
+      <input type="text" class="form-control" id="nomEvenement" formControlName="nomEvenement" />
+    </div>
+    <div class="mb-3">
+      <label for="location" class="col-form-label">Location:</label>
+      <input type="text" class="form-control" id="location" formControlName="location" />
+    </div>
+    <div class="mb-3">
+      <label for="date" class="col-form-label">Date :</label>
+      <input type="date" class="form-control" id="date" formControlName="date" />
+    </div>
+    <div class="mb-3">
+      <label for="idOrganisateur" class="col-form-label">
+        Id Organisateur:
+      </label>
+      <input type="text" class="form-control" id="idOrganisateur" formControlName="idOrganisateur"
+        placeholder="{{evenement.idOrganisateur}}" value="{{evenement.idOrganisateur}}" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="col-form-label">Description :</label>
+      <input type="datetime" class="form-control" id="description" formControlName="description"
+        placeholder="{{evenement.description}}" />
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <app-button text="Update" (btnClick)="onUpdate()"></app-button>
+</div>

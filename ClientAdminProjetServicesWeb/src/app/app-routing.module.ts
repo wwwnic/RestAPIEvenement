@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from './login/login.component';
-import {AdministrationComponent} from './administration/administration.component';
+import { EvenementComponent } from './components/evenement/evenement.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UtilisateurComponent } from './components/utilisateur/utilisateur.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'administration', component: AdministrationComponent}
+  { path: 'utilisateur', component: UtilisateurComponent },
+  { path: 'evenement', component: EvenementComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -13,3 +17,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [LoginComponent, UtilisateurComponent, EvenementComponent, PageNotFoundComponent]

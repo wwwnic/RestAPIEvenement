@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="updateLabel">Delete Utilisateur</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeDeleteModal()"></button>
+</div>
+<div class="modal-body">
+  <p class="lead">Delete User Form (Please write in the key)</p>
+  <form [formGroup]="deleteUtilisateurForm" (ngSubmit)="onDelete()">
+    <div class="mb-3">
+      <label for="idEvenement" class="col-form-label">
+        Id:
+      </label>
+      <input type="text" class="form-control" id="idEvenement" formControlName="idEvenement"
+        placeholder="{{evenement.idEvenement}}" value="{{evenement.idEvenement}}" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="key" class="col-form-label">Key:</label>
+      <input type="text" class="form-control" id="key" formControlName="key" />
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+
+  <app-button text="Delete" (btnClick)="onDelete()"></app-button>
+</div>

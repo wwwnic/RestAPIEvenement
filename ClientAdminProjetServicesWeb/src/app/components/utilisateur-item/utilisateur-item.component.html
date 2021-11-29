@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row justify-content-begin ">
+    <div class="col-md-6 col-sm-12 col-lg-6 p-3 ">
+      <div class=" border border-primary rounded p-lg-4 p-3 mb-3">
+        <div class="row">
+          <div class="text-begin col-1 col-lg-1">
+            <p>Id:</p>
+          </div>
+          <div class="text-begin col-1 col-lg-1">
+            <p>{{utilisateur.idUtilisateur}}</p>
+          </div>
+          <div class="text-end text-lg-begin col-2 col-lg-1 offset-3 offset-lg-6 ">
+            <button (click)="visit(utilisateur)" class="btn btn-primary">
+              <i class="bi bi-folder-plus"></i>
+            </button>
+          </div>
+          <div class="text-begin  col-2 col-lg-1">
+            <button (click)="openUpdateModal(utilisateur)" class=" btn btn-primary">
+              <i class="bi bi-pen"></i>
+            </button>
+
+          </div>
+          <div class=" text-begin col-2 col-lg-1">
+            <button (click)="openDeleteModal(utilisateur)" class="btn btn-primary">
+              <i class="bi bi-trash2-fill"></i>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-begin col-6">
+            <p>Nom Utilisateur :</p>
+          </div>
+          <div class="text-end col-6 ">
+            <p>{{utilisateur.nomUtilisateur}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-begin col-3">
+            <p>Courriel:</p>
+          </div>
+          <div class="text-end col-9">
+            <p>{{utilisateur.courriel}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-begin col-6">
+            <p>Telephone:</p>
+          </div>
+          <div class="text-end col-6">
+            <p>{{utilisateur.telephone}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-begin col-6">
+            <p>Date Creation:</p>
+          </div>
+          <div class="text-end col-6">
+            <p>{{utilisateur.dateCreation}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

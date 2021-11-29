@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+  <div class="container">
+    <a href="" class="navbar-brand">Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigationMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navigationMenu" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <ng-template [ngIf]="get() == null">
+          <li class="nav-item pr-2">
+            <a routerLink="/" class="nav-link">Login</a>
+          </li>
+        </ng-template>
+        <ng-template [ngIf]="get()!= null &&  get() != ''">
+          <li class="nav-item pr-2">
+            <a routerLink="/" (click)="logout()" class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item pr-2">
+            <a routerLink="/utilisateur" class="nav-link">Utilisateur</a>
+          </li>
+          <li class="nav-item pr-2">
+            <a routerLink="/evenement" class="nav-link">Evenement</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>
