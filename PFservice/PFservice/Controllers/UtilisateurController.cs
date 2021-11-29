@@ -96,7 +96,7 @@ namespace PFservice.Controllers
             await _urepo.CreateUtilisateurEvenement(u);
         }
 
-        [HttpDelete("deleteParticipation")]
+        [HttpPost("deleteParticipation")]
         public async Task DeleteParticipation([FromBody] Utilisateurevenement u)
         {
             await _urepo.DeleteUtilisateurEvenement(u);

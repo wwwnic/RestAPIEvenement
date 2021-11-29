@@ -29,7 +29,7 @@ namespace PFservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProjetEvenementsContext>(o=>o.UseMySQL("server=localhost;user id=root;password=root;persistsecurityinfo=True;allowpublickeyretrieval=True;sslmode=None;port=3306;database=projetevenements"));
+            services.AddDbContext<ProjetEvenementsContext>(o=>o.UseMySQL("server=localhost;user id=root;password=root;persistsecurityinfo=True;allowpublickeyretrieval=True;sslmode=None;port=3308;database=projetevenements"));
             services.AddScoped(typeof(IUtilisateurRepository), typeof(UtilisateurRepository));
             services.AddScoped(typeof(IEvenementRepository), typeof(EvenementRepository));
             services.AddScoped(typeof(ICommentaireRepository), typeof(CommentaireRepository));
