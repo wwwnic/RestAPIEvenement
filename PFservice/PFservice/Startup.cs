@@ -43,6 +43,7 @@ namespace PFservice
             {
                 builder.AllowAnyMethod().AllowAnyHeader()
                 .WithOrigins("http://localhost:4200")
+                .WithOrigins("http://localhost:64213")
                 .AllowCredentials();
             }));
         }
@@ -60,6 +61,8 @@ namespace PFservice
             app.UseRouting();
 
             app.UseCors("CorsPolicy");
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

@@ -26,7 +26,7 @@ namespace PFservice.Repositories
             }
         }
 
-        public async Task Create(Evenement e)
+        public async Task<Evenement> Create(Evenement e)
         {
             e.IdEvenement = id + 1;
             _context.Evenements.Add(e);
@@ -37,6 +37,7 @@ namespace PFservice.Repositories
             };
             _context.Utilisateurevenements.Add(ue);
             await _context.SaveChangesAsync();
+            return e;
         }
 
         public async Task Delete(int id)
@@ -81,7 +82,6 @@ namespace PFservice.Repositories
             }
             if (!string.IsNullOrEmpty(mois))
             {
-
                 query = query.Where(e => e.Date.Value.ToString().Substring(0,7).Equals(mois));
             }
             if (!string.IsNullOrEmpty(location))

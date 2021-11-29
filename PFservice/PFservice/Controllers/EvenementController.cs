@@ -53,7 +53,7 @@ namespace PFservice.Controllers
         }
 
         // GET api/<EvenementController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public async Task<Evenement> GetEvenementParId(int id)
         {
             return await _erepo.GetEvenementParId(id);
@@ -61,9 +61,9 @@ namespace PFservice.Controllers
 
         // POST api/<EvenementController>
         [HttpPost("New")]
-        public async Task CreateEvenement([FromBody] Evenement e)
+        public async Task<Evenement> CreateEvenement([FromBody] Evenement e)
         {
-            await _erepo.Create(e);
+            return await _erepo.Create(e);
         }
 
         // PUT api/<EvenementController>/5

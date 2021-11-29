@@ -31,7 +31,7 @@ namespace PFservice.Controllers
         }
 
         // GET api/<UtilisateurController>/5
-        [HttpGet("GetById/{id}")]
+        [HttpGet("GetById")]
         public async Task<Utilisateur> GetUserById(int id)
         {
             return await _urepo.GetUtilisateurParId(id);
@@ -52,9 +52,25 @@ namespace PFservice.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<Utilisateur> Post(string userName, string password)
+        public async Task<Utilisateur> Login([FromBody]Utilisateur u)
         {
-            return await _urepo.GetUtilisateurLogin(userName, password);
+            return await _urepo.GetUtilisateurLogin(u.NomUtilisateur, u.MotDePasse);
+        }
+
+        // Méthode qui permet de se connecter en tant qu'admin sur le client Angular.
+        // On assume que l'admin est l'utilisateur avec l'id 1 dans la base de données.
+        [HttpPost("LoginAdmin")]
+        public async Task<string> LoginAdmin([FromBody] Utilisateur u)
+        {
+            var utilisateur = await _urepo.GetUtilisateurLogin(u.NomUtilisateur, u.MotDePasse);
+            if (utilisateur.IdUtilisateur == 1)
+            {
+                return "admin";
+            }
+            else
+            {
+                return "user";
+            }
         }
 
         // PUT api/<UtilisateurController>/5

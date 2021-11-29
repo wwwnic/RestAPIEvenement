@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -20,8 +21,11 @@ namespace PFservice.Models
         public int IdOrganisateur { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public virtual Utilisateur IdOrganisateurNavigation { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Commentaire> Commentaires { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Utilisateurevenement> Utilisateurevenements { get; set; }
     }
 }
