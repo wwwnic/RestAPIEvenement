@@ -15,13 +15,14 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UtilisateurService {
-  private apiUrl = 'http://localhost:23784/api/Utilisateur';
+  private apiUrl = 'http://10.0.0.149:23784/api/Utilisateur';
 
   constructor(private http: HttpClient) { }
 
   doLogin(logInfo: LoginInfo): Observable<Utilisateur> {
-    const tempUrl = this.apiUrl.concat('/Login?userName=' + logInfo.nomUtilisateur + '&password=' + logInfo.password);
-    return this.http.post<Utilisateur>(tempUrl, logInfo);
+    const tempUrl = this.apiUrl.concat('/Login');
+	var utilisateur = {nomUtilisateur:logInfo.nomUtilisateur,motDePasse:logInfo.password};
+    return this.http.post<Utilisateur>(tempUrl, utilisateur);
   }
 
   getAll(): Observable<Utilisateur[]> {

@@ -8,7 +8,7 @@ export class ApiClientService {
 
   constructor(private httpClient : HttpClient) { }
 
-  url : string = "http://localhost:23784/api/"
+  url : string = "http://10.0.0.149:23784/api/"
 
   public getEvenements() {
     return this.httpClient.get(this.url+"Utilisateur/GetAll")
