@@ -40,7 +40,7 @@ namespace PFservice.Controllers
             await _crepo.Update(c);
         }
 
-        [HttpDelete("Delete/{id}/{key}")]
+        [HttpDelete("Delete/{key}")]
 
         public async Task DeleteCommentaire(int id,string key)
         {

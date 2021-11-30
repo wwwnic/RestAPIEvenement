@@ -81,7 +81,7 @@ namespace PFservice.Controllers
         }
 
         // DELETE api/<UtilisateurController>/5
-        [HttpDelete("Delete/{id}/{key}")]
+        [HttpDelete("Delete/{key}")]
         public async Task Delete(int id,string key)
         {
             if (key.Equals("secret"))
