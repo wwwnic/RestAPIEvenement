@@ -17,6 +17,6 @@ namespace PFservice.Repositories
         Task Delete(int id);
         Task CreateUtilisateurEvenement(Utilisateurevenement u);
         Task DeleteUtilisateurEvenement(Utilisateurevenement u);
-        Task<Utilisateur> GetUtilisateurDansEvenement(Utilisateurevenement u);
+        Task<IEnumerable<Utilisateur>> GetUtilisateursDansEvenement(int idEvenement);
     }
 }

@@ -43,6 +43,12 @@ namespace PFservice.Controllers
             return await _urepo.GetUtilisateursParNom(name);
         }
 
+        [HttpGet("GetByEvent")]
+        public async Task<IEnumerable<Utilisateur>> GetByEvent(int idEvenement)
+        {
+            return await _urepo.GetUtilisateursDansEvenement(idEvenement);
+        }
+
         // POST api/<UtilisateurController>
         [HttpPost("New")]
         public async Task Post([FromBody] Utilisateur u)

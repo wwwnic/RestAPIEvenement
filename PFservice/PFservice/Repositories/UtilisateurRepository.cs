@@ -93,9 +93,9 @@ namespace PFservice.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Utilisateur> GetUtilisateurDansEvenement(Utilisateurevenement u)
+        public async Task<IEnumerable<Utilisateur>> GetUtilisateursDansEvenement(int idEvenement)
         {
-            return await _context.Utilisateurs.FindAsync(u.IdUtilisateur);
+            return await _context.Utilisateurs.Where(u => u.Utilisateurevenements.Any(ue => ue.IdEvenement == idEvenement)).ToListAsync();
         }
     }
 }
