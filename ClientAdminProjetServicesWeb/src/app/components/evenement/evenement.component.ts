@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Evenement } from 'src/app/Evenement';
+import { Evenement } from 'src/app/entities/Evenement';
 import { EvenementService } from 'src/app/services/evenement.service';
-import { DeleteKey } from 'src/app/deleteKey';
+import { DeleteKey } from 'src/app/entities/deleteKey';
+import { SearchFormEvenement } from 'src/app/entities/SearchFormEvenement';
 
 @Component({
   selector: 'app-evenement',
@@ -13,6 +14,12 @@ export class EvenementComponent implements OnInit {
 
   evenements!: Evenement[];
   constructor(private evenementService: EvenementService) {
+    this.getAll();
+  }
+  ngOnInit(): void {
+  }
+
+  getAll() {
     this.evenementService.getAll().subscribe((evenements) => (this.evenements = evenements));
   }
 
@@ -28,7 +35,10 @@ export class EvenementComponent implements OnInit {
     this.evenementService.deleteEvenement(deleteKey).subscribe(() => this.evenements.filter(e => e.idEvenement !== deleteKey.id));
   }
 
-  ngOnInit(): void {
+  filterEvenements(sfe: SearchFormEvenement) {
+    if (sfe.searchMethod == "getAll") {
+      this.getAll();
+    }
   }
 
 }

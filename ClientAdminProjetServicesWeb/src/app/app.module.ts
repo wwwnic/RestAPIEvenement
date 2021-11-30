@@ -16,6 +16,8 @@ import { ModalDeleteEvenementComponent } from './components/modal-delete-eveneme
 import { ModalUpdateUtilisateurComponent } from './components/modal-update-utilisateur/modal-update-utilisateur.component';
 import { ModalUpdateEvenementComponent } from './components/modal-update-evenement/modal-update-evenement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchBarUtilisateurComponent } from './components/search-bar-utilisateur/search-bar-utilisateur.component';
+import { SearchBarEvenementComponent } from './components/search-bar-evenement/search-bar-evenement.component';
 
 
 
@@ -33,6 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ModalDeleteEvenementComponent,
     ModalUpdateUtilisateurComponent,
     ModalUpdateEvenementComponent,
+    SearchBarUtilisateurComponent,
+    SearchBarEvenementComponent,
   ],
   imports: [
     BrowserModule,

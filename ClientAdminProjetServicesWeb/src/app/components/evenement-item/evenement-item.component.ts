@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { Evenement } from 'src/app/Evenement';
+import { Evenement } from 'src/app/entities/Evenement';
 import { ModalUpdateEvenementComponent } from '../modal-update-evenement/modal-update-evenement.component';
 import { ModalDeleteEvenementComponent } from '../modal-delete-evenement/modal-delete-evenement.component';
-import { DeleteKey } from 'src/app/deleteKey';
+import { DeleteKey } from 'src/app/entities/deleteKey';
 @Component({
   selector: 'app-evenement-item',
   templateUrl: './evenement-item.component.html',

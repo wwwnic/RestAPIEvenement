@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Evenement } from 'src/app/Evenement';
-import { DeleteKey } from 'src/app/deleteKey';
-
+import { Evenement } from 'src/app/entities/Evenement';
+import { DeleteKey } from 'src/app/entities/deleteKey';
 @Component({
   selector: 'app-modal-delete-evenement',
   templateUrl: './modal-delete-evenement.component.html',

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GestionEvenementsComponent } from './gestion-evenements.component';
+import { SearchBarEvenementComponent } from './search-bar-evenement.component';
 
-describe('GestionEvenementsComponent', () => {
-  let component: GestionEvenementsComponent;
-  let fixture: ComponentFixture<GestionEvenementsComponent>;
+describe('SearchBarEvenementComponent', () => {
+  let component: SearchBarEvenementComponent;
+  let fixture: ComponentFixture<SearchBarEvenementComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GestionEvenementsComponent ]
+      declarations: [ SearchBarEvenementComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GestionEvenementsComponent);
+    fixture = TestBed.createComponent(SearchBarEvenementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
