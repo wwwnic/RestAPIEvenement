@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Utilisateur } from 'src/app/utilisateur';
+import { Utilisateur } from 'src/app/entities/utilisateur';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 

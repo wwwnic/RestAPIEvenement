@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, EventEmitter, Output, NgModule } from '@angular/core';
-import { Utilisateur } from 'src/app/utilisateur';
-import { DeleteKey } from 'src/app/deleteKey';
+import { Utilisateur } from 'src/app/entities/utilisateur';
+import { DeleteKey } from 'src/app/entities/deleteKey';
 import { ModalUpdateUtilisateurComponent } from '../modal-update-utilisateur/modal-update-utilisateur.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDeleteUtilisateurComponent } from '../modal-delete-utilisateur/modal-delete-utilisateur.component';

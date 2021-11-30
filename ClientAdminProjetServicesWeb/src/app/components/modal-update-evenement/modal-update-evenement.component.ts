@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Evenement } from 'src/app/Evenement';
+import { Evenement } from 'src/app/entities/Evenement';
 
 @Component({
   selector: 'app-modal-update-evenement',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Evenement } from 'src/app/Evenement';
+import { Evenement } from 'src/app/entities/Evenement';
 import { EvenementService } from 'src/app/services/evenement.service';
-import { DeleteKey } from 'src/app/deleteKey';
+import { DeleteKey } from 'src/app/entities/deleteKey';
 
 @Component({
   selector: 'app-evenement',

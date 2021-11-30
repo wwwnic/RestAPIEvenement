@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UtilisateurService } from './services/utilisateur.service';
-import { Utilisateur } from './utilisateur';
-import { UtilisateurEvenement } from './UtilisateurEvenement';
+import { Utilisateur } from './entities/utilisateur';
+import { UtilisateurEvenement } from './entities/UtilisateurEvenement';
 
 @Component({
   selector: 'app-root',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Evenement } from '../Evenement';
+import { Evenement } from '../entities/Evenement';
 import { Observable } from 'rxjs';
-import { DeleteKey } from '../deleteKey';
+import { DeleteKey } from '../entities/deleteKey';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class EvenementService {
-  private apiUrl = 'http://localhost:23784/api/Evenement';
+  private apiUrl = 'https://localhost:44312/api/Evenement';
 
   constructor(private http: HttpClient) { }
 

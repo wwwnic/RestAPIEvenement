@@ -1,7 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Event } from '@angular/router';
-import { Utilisateur } from 'src/app/utilisateur';
-
 
 @Component({
   selector: 'app-nav',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DeleteKey } from 'src/app/deleteKey';
+import { DeleteKey } from 'src/app/entities/deleteKey';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
-import { Utilisateur } from 'src/app/utilisateur';
+import { Utilisateur } from 'src/app/entities/utilisateur';
 
 @Component({
   selector: 'app-utilisateur',

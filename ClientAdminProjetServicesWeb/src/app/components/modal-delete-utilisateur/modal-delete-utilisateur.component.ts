@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Utilisateur } from 'src/app/utilisateur';
-import { DeleteKey } from 'src/app/deleteKey';
+import { Utilisateur } from 'src/app/entities/utilisateur';
+import { DeleteKey } from 'src/app/entities/deleteKey';
 
 @Component({
   selector: 'app-modal-delete-utilisateur',
