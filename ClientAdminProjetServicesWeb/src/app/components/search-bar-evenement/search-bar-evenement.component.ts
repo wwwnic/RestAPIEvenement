@@ -1,15 +1,16 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SearchFormUtilisateur } from 'src/app/entities/SearchFormUtilisateur';
+
+import { SearchFormEvenement } from 'src/app/entities/SearchFormEvenement';
 
 @Component({
-  selector: 'app-search-bar-utilisateur',
-  templateUrl: './search-bar-utilisateur.component.html',
-  styleUrls: ['./search-bar-utilisateur.component.css']
+  selector: 'app-search-bar-evenement',
+  templateUrl: './search-bar-evenement.component.html',
+  styleUrls: ['./search-bar-evenement.component.css']
 })
-export class SearchBarUtilisateurComponent implements OnInit {
+export class SearchBarEvenementComponent implements OnInit {
 
-  @Output() searchUtilisateurs = new EventEmitter<SearchFormUtilisateur>();
+  @Output() searchEvenements = new EventEmitter<SearchFormEvenement>();
 
   erreurMessage: string = "";
   // searchMethod!: Object = {};
@@ -30,9 +31,9 @@ export class SearchBarUtilisateurComponent implements OnInit {
     //La recherche avec Id Fonctionne, mais le filtre dans 
     //utilisateur.component ne fonctionne pas 
 
-    let searchForm: SearchFormUtilisateur;
+    let searchFormEvenement: SearchFormEvenement;
     if (this.searchForm.value.searchMethod == "getAll") {
-      searchForm = {
+      searchFormEvenement = {
         searchMethod: this.searchForm.value.searchMethod
       }
     }
@@ -40,11 +41,17 @@ export class SearchBarUtilisateurComponent implements OnInit {
       this.erreurMessage = ("Fill in the search method and value");
       return;
     }
-    else if (this.searchForm.value.searchMethod == "getById") {
+    else if (this.searchForm.value.searchMethod == "getByName") {
+      this.erreurMessage = "";
+      searchFormEvenement = {
+        searchMethod: this.searchForm.value.searchMethod,
+        searchValue: this.searchForm.value.searchValue
+      }
+    } else {
       this.erreurMessage = "";
       try {
         let searchValue = parseInt(this.searchForm.value.searchValue);
-        searchForm = {
+        searchFormEvenement = {
           searchMethod: this.searchForm.value.searchMethod,
           searchValue: searchValue
         }
@@ -54,14 +61,9 @@ export class SearchBarUtilisateurComponent implements OnInit {
       }
       return;
     }
-    else {
-      this.erreurMessage = "";
-      searchForm = {
-        searchMethod: this.searchForm.value.searchMethod,
-        searchValue: this.searchForm.value.searchValue
-      }
-    }
-    this.searchUtilisateurs.emit(searchForm);
+    this.searchEvenements.emit(searchFormEvenement);
   }
-
 }
+
+
+
