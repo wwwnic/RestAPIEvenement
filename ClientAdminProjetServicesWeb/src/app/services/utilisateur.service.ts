@@ -20,33 +20,33 @@ export class UtilisateurService {
   constructor(private http: HttpClient) { }
 
   doLogin(logInfo: LoginInfo): Observable<Utilisateur> {
-    const tempUrl = this.apiUrl.concat('/Login');
+    const tempUrl = `${this.apiUrl}/Login`
     var utilisateur = { nomUtilisateur: logInfo.nomUtilisateur, motDePasse: logInfo.password };
     return this.http.post<Utilisateur>(tempUrl, utilisateur);
   }
 
   getAll(): Observable<Utilisateur[]> {
-    const tempUrl = this.apiUrl.concat('/GetAll');
+    const tempUrl = `${this.apiUrl}/GetAll`;
     return this.http.get<Utilisateur[]>(tempUrl);
   }
 
   updateUser(user: Utilisateur): Observable<Utilisateur> {
-    const tempUrl = this.apiUrl.concat('/Update');
+    const tempUrl = `${this.apiUrl}/Update`;
     return this.http.put<Utilisateur>(tempUrl, user, httpOptions);
   }
 
   deleteUser(deleteKey: DeleteKey): Observable<Utilisateur> {
-    const tempUrl = this.apiUrl.concat('/Delete/' + deleteKey.id + '/' + deleteKey.key);
+    const tempUrl = `${this.apiUrl}/Delete/${deleteKey.key}?id=${deleteKey.id}`
     return this.http.delete<Utilisateur>(tempUrl, httpOptions);
   }
 
   getAllUtuilisateursByName(name: string): Observable<Utilisateur[]> {
-    const tempUrl = this.apiUrl.concat('/GetByName?name=' + name);
+    const tempUrl = `${this.apiUrl}/GetByName?name=${name}`;
     return this.http.get<Utilisateur[]>(tempUrl);
   }
 
   getUtilisateurById(id: number): Observable<Utilisateur> {
-    const tempUrl = this.apiUrl.concat('/GetById?id=' + id);
+    const tempUrl = `${this.apiUrl}/GetById?id=${id}`;
     return this.http.get<Utilisateur>(tempUrl);
   }
 

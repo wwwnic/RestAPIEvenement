@@ -17,6 +17,9 @@ export class UtilisateurComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUtilisateur();
   }
+  ngOnChanges() {
+    this.getAllUtilisateur();
+  }
 
   getAllUtilisateur() {
     this.utilisateurService.getAll().subscribe((users) => (this.utilisateurs = users));
@@ -31,13 +34,15 @@ export class UtilisateurComponent implements OnInit {
 
   deleteUtilisateur(dk: DeleteKey) {
     //UI NOT UPDATING AFTER DELETION OF USER
-    this.utilisateurService.deleteUser(dk).subscribe(() => this.utilisateurs.filter(u => u.idUtilisateur !== dk.id));
+    console.log(this.utilisateurs.filter(u => u.idUtilisateur === dk.id));
+    this.utilisateurService.deleteUser(dk).subscribe(() => this.utilisateurs = this.utilisateurs.filter(u => u.idUtilisateur !== dk.id));
   }
 
   filterUtilisateurs(sfm: SearchFormUtilisateur) {
     if (sfm.searchMethod == "getById") {
       const id = parseInt(sfm.searchValue);
-      this.utilisateurService.getUtilisateurById(id).subscribe(() => this.utilisateurs.filter(u => u.idUtilisateur === id));
+      console.log(sfm.searchValue);
+      this.utilisateurService.getUtilisateurById(id).subscribe(() => this.utilisateurs = this.utilisateurs.filter(u => u.idUtilisateur === id));
     }
     else if (sfm.searchMethod == "getByName") {
       this.utilisateurService.getAllUtuilisateursByName(sfm.searchValue).subscribe((users) => this.utilisateurs = users);
