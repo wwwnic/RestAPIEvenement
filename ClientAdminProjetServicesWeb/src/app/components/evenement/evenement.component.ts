@@ -32,12 +32,19 @@ export class EvenementComponent implements OnInit {
   }
 
   deleteEvenement(deleteKey: DeleteKey) {
-    this.evenementService.deleteEvenement(deleteKey).subscribe(() => this.evenements.filter(e => e.idEvenement !== deleteKey.id));
+    this.evenementService.deleteEvenement(deleteKey).subscribe(() => this.evenements = this.evenements.filter(e => e.idEvenement !== deleteKey.id));
   }
 
   filterEvenements(sfe: SearchFormEvenement) {
     if (sfe.searchMethod == "getAll") {
       this.getAll();
+    } else if (sfe.searchMethod == "getByOrganisateurId") {
+      this.evenementService.getAllEvenementsByOrganisateurId(sfe.searchValue).subscribe((evenements) => this.evenements = evenements);
+    } else if (sfe.searchMethod == "getByParticipantId") {
+      this.evenementService.getAllEvenementsParPartcipant(sfe.searchValue).subscribe((evenements) => this.evenements = evenements);
+    } else if (sfe.searchMethod == "getByEvenementId") {
+      let id = parseInt(sfe.searchValue);
+      this.evenementService.getEvenementById(sfe.searchValue).subscribe(() => this.evenements = this.evenements.filter(e => e.idEvenement == id));
     }
   }
 

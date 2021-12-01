@@ -40,20 +40,20 @@ export class SearchBarUtilisateurComponent implements OnInit {
       this.erreurMessage = ("Fill in the search method and value");
       return;
     }
-    else if (this.searchForm.value.searchMethod == "getById") {
-      this.erreurMessage = "";
-      try {
-        let searchValue = parseInt(this.searchForm.value.searchValue);
-        searchForm = {
-          searchMethod: this.searchForm.value.searchMethod,
-          searchValue: searchValue
-        }
-      } catch (error) {
-        this.erreurMessage = ("Please provide a number if you search for ID");
-        console.log("Error found");
-      }
-      return;
-    }
+    // else if (this.searchForm.value.searchMethod == "getById") {
+    //   this.erreurMessage = "";
+    //   try {
+    //     let searchValue = parseInt(this.searchForm.value.searchValue);
+    //     searchForm = {
+    //       searchMethod: this.searchForm.value.searchMethod,
+    //       searchValue: searchValue
+    //     }
+    //   } catch (error) {
+    //     this.erreurMessage = ("Please provide a number if you search for ID");
+    //     console.log("Error found");
+    //   }
+    //   return;
+    // }
     else {
       this.erreurMessage = "";
       searchForm = {

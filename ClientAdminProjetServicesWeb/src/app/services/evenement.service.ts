@@ -20,36 +20,36 @@ export class EvenementService {
 
 
   getAll(): Observable<Evenement[]> {
-    const tempUrl = this.apiUrl.concat('/GetAll');
+    const tempUrl = `${this.apiUrl}/GetAll`
     return this.http.get<Evenement[]>(tempUrl);
   }
 
   updateEvenement(evenement: Evenement): Observable<Evenement> {
-    const tempUrl = this.apiUrl.concat('/Update');
+    const tempUrl = `${this.apiUrl}/Update`
     return this.http.put<Evenement>(tempUrl, evenement, httpOptions);
   }
 
   deleteEvenement(deleteKey: DeleteKey): Observable<Evenement> {
-    const tempUrl = this.apiUrl.concat('/Delete/' + deleteKey.id + '/' + deleteKey.key);
+    const tempUrl = `${this.apiUrl}/Delete/${deleteKey.key}?id=${deleteKey.id}`;
     return this.http.delete<Evenement>(tempUrl, httpOptions);
   }
 
   getEvenementById(id: number): Observable<Evenement> {
-    const tempUrl = this.apiUrl.concat('/GetById?id=' + id);
+    const tempUrl = `${this.apiUrl}/GetById?id=${id}`;
     return this.http.get<Evenement>(tempUrl);
   }
 
   getRecentEvenement(): Observable<Evenement[]> {
-    const tempUrl = this.apiUrl.concat('/GetRecent');
+    const tempUrl = `${this.apiUrl}/GetRecent`;
     return this.http.get<Evenement[]>(tempUrl);
   }
 
-  getAllEvenementsByOrganisateurId(int: number): Observable<Evenement[]> {
-    const tempUrl = this.apiUrl.concat('/GetParOrganisateur/' + int);
+  getAllEvenementsByOrganisateurId(id: number): Observable<Evenement[]> {
+    const tempUrl = `${this.apiUrl}/GetParOrganisateur/${id}`
     return this.http.get<Evenement[]>(tempUrl);
   }
-  getAllEvenementsParPartcipant(int: number): Observable<Evenement[]> {
-    const tempUrl = this.apiUrl.concat('/GetParParticipants/' + int);
+  getAllEvenementsParPartcipant(id: number): Observable<Evenement[]> {
+    const tempUrl = `${this.apiUrl}/GetParParticipant/${id}`
     return this.http.get<Evenement[]>(tempUrl);
   }
 }

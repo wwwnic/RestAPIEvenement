@@ -33,6 +33,7 @@ export class SearchBarEvenementComponent implements OnInit {
 
     let searchFormEvenement: SearchFormEvenement;
     if (this.searchForm.value.searchMethod == "getAll") {
+      this.erreurMessage = "";
       searchFormEvenement = {
         searchMethod: this.searchForm.value.searchMethod
       }
@@ -48,18 +49,23 @@ export class SearchBarEvenementComponent implements OnInit {
         searchValue: this.searchForm.value.searchValue
       }
     } else {
-      this.erreurMessage = "";
-      try {
-        let searchValue = parseInt(this.searchForm.value.searchValue);
-        searchFormEvenement = {
-          searchMethod: this.searchForm.value.searchMethod,
-          searchValue: searchValue
-        }
-      } catch (error) {
-        this.erreurMessage = ("Please provide a number if you search for ID");
-        console.log("Error found");
+      //   this.erreurMessage = "";
+      //   try {
+      //     let searchValue = parseInt(this.searchForm.value.searchValue);
+      //     searchFormEvenement = {
+      //       searchMethod: this.searchForm.value.searchMethod,
+      //       searchValue: searchValue
+      //     }
+      //   } catch (error) {
+      //     this.erreurMessage = ("Please provide a number if you search for ID");
+      //     console.log("Error found");
+      //   }
+      //   return;
+      // }
+      searchFormEvenement = {
+        searchMethod: this.searchForm.value.searchMethod,
+        searchValue: this.searchForm.value.searchValue
       }
-      return;
     }
     this.searchEvenements.emit(searchFormEvenement);
   }
