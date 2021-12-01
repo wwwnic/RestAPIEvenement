@@ -29,6 +29,7 @@ namespace PFservice.Repositories
         public async Task Create(Commentaire c)
         {
             c.IdCommentaire = id + 1;
+            c.Date = DateTime.Now;
             _context.Commentaires.Add(c);
             await _context.SaveChangesAsync();
         }
