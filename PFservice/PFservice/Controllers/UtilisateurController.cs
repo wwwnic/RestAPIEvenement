@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PFservice.Attributes;
 using PFservice.Models;
 using PFservice.Repositories;
 using System;
@@ -12,6 +13,7 @@ namespace PFservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
     public class UtilisateurController : ControllerBase
     {
 
