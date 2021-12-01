@@ -22,7 +22,7 @@ namespace PFservice.Controllers
             _crepo = crepo;
         }
 
-        [HttpGet("GetByEvenement/{id}")]
+        [HttpGet("GetByEvenement")]
         public async Task<IEnumerable<Commentaire>> GetAllCommentairesParEvenement(int id)
         {
             return await _crepo.GetCommentairesParEvenement(id);
