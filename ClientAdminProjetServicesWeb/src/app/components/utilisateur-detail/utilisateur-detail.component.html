@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row justify-content-begin">
+    <app-utilisateur-item [utilisateur]="user">
+    </app-utilisateur-item>
+    <app-evenement-item *ngFor="let evenement of evenements" [evenement]="evenement">
+    </app-evenement-item>
+
+  </div>
+</div>

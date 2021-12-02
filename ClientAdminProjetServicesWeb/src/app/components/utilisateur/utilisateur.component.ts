@@ -24,9 +24,6 @@ export class UtilisateurComponent implements OnInit {
   getAllUtilisateur() {
     this.utilisateurService.getAll().subscribe((users) => (this.utilisateurs = users));
   }
-  consulterUtilisateur(user: Utilisateur) {
-    console.log(user);
-  }
 
   updateUtilisateur(user: Utilisateur) {
     this.utilisateurService.updateUser(user).subscribe();

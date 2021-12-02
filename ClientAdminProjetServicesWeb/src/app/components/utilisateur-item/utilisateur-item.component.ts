@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, EventEmitter, Output, NgModule } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Utilisateur } from 'src/app/entities/utilisateur';
 import { DeleteKey } from 'src/app/entities/deleteKey';
 import { ModalUpdateUtilisateurComponent } from '../modal-update-utilisateur/modal-update-utilisateur.component';
@@ -12,12 +13,11 @@ import { empty } from 'rxjs';
   styleUrls: ['./utilisateur-item.component.css']
 })
 export class UtilisateurItemComponent implements OnInit {
-  @Output() consult: EventEmitter<Utilisateur> = new EventEmitter();
   @Output() update: EventEmitter<Utilisateur> = new EventEmitter();
   @Output() delete: EventEmitter<DeleteKey> = new EventEmitter();
   @Input() utilisateur!: Utilisateur;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,7 +42,7 @@ export class UtilisateurItemComponent implements OnInit {
   }
 
   visit(user: Utilisateur): void {
-    this.consult.emit(user);
+    this.router.navigate([`/utilisateur/${user.idUtilisateur}`]);
   }
 
 

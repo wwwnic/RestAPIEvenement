@@ -4,6 +4,6 @@
 
   <app-search-bar-utilisateur (searchUtilisateurs)="filterUtilisateurs($event)"></app-search-bar-utilisateur>
   <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur"
-    (consult)="consulterUtilisateur($event)" (update)="updateUtilisateur($event)" (delete)="deleteUtilisateur($event)">
+    (update)="updateUtilisateur($event)" (delete)="deleteUtilisateur($event)">
   </app-utilisateur-item>
 </section>

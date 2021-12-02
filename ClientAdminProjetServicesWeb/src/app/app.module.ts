@@ -18,6 +18,7 @@ import { ModalUpdateEvenementComponent } from './components/modal-update-eveneme
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchBarUtilisateurComponent } from './components/search-bar-utilisateur/search-bar-utilisateur.component';
 import { SearchBarEvenementComponent } from './components/search-bar-evenement/search-bar-evenement.component';
+import { UtilisateurDetailComponent } from './components/utilisateur-detail/utilisateur-detail.component';
 
 
 
@@ -37,6 +38,7 @@ import { SearchBarEvenementComponent } from './components/search-bar-evenement/s
     ModalUpdateEvenementComponent,
     SearchBarUtilisateurComponent,
     SearchBarEvenementComponent,
+    UtilisateurDetailComponent,
   ],
   imports: [
     BrowserModule,

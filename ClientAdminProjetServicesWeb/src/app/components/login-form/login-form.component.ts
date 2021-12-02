@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { LoginInfo } from 'src/app/entities/loginInfo';
 import { Utilisateur } from 'src/app/entities/utilisateur';
@@ -21,7 +20,7 @@ export class LoginFormComponent implements OnInit {
   })
 
 
-  constructor(private utilisateurService: UtilisateurService, private router: Router) { }
+  constructor(private utilisateurService: UtilisateurService) { }
 
   ngOnInit(): void {
     // this.utilisateurService.doLogin(this.loginForm).subscribe();
