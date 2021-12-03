@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PFservice.Attributes;
 using PFservice.Models;
 using PFservice.Repositories;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace PFservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
     public class CommentaireController : ControllerBase
     {
 

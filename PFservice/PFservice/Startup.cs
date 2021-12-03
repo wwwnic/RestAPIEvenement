@@ -37,6 +37,7 @@ namespace PFservice
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PFservice", Version = "v1" });
+                c.OperationFilter<AddHeaderSwagger>();
             });
             services.AddCors(options => options.AddPolicy("CorsPolicy",
             builder =>
