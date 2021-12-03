@@ -1,4 +1,17 @@
-<app-search-bar-evenement (searchEvenements)="filterEvenements($event)"></app-search-bar-evenement>
-<app-evenement-item *ngFor="let evenement of evenements" [evenement]="evenement" (update)="updateEvenement($event)"
-  (delete)="deleteEvenement($event)">
-</app-evenement-item>
+<section class="p-5">
+  <div class="container p-3">
+    <div class="row">
+      <app-search-bar-evenement [ngClass]="'col-lg-10 offset-lg-1 border border-primary rounded p-3'"
+        (searchEvenements)="filterEvenements($event)"></app-search-bar-evenement>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <app-evenement-item [ngClass]="'col-md-6 col-sm-12 col-lg-5 border border-primary rounded p-lg-4 p-3 mb-3 mr-2'"
+        *ngFor=" let
+        evenement of evenements" [evenement]="evenement" (update)="updateEvenement($event)"
+        (delete)="deleteEvenement($event)">
+      </app-evenement-item>
+    </div>
+  </div>
+</section>

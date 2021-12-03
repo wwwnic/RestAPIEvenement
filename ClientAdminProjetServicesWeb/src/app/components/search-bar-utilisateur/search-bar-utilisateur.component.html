@@ -1,23 +1,21 @@
-<div class="container border border-primary  rounded p-3">
-  <ng-template [ngIf]="erreurMessage != ''">
-    <div class="alert alert-danger text-center col-6 offset-3">{{erreurMessage}}</div>
-  </ng-template>
-  <form [formGroup]="searchForm" (ngSubmit)="filterSearch()" class="row justify-content-center">
-    <div class="col-auto ">
-      <label for="" class="form-label mt-2">Search By:</label>
-    </div>
-    <div class="col-auto">
-      <select class="form-select" name="searchMethod" id="searchMethod" formControlName="searchMethod">
-        <option selected value="getAll">Get All:</option>
-        <option selected value="getById">Get By Id:</option>
-        <option value="getByName">Get By Name:</option>
-      </select>
-    </div>
-    <div class="col-auto">
-      <input id="searchValue" name="searchValue" type="text" class="form-control" formControlName="searchValue">
-    </div>
-    <div class="col-auto">
-      <app-button text="Search" (btnClick)="filterSearch()"></app-button>
-    </div>
-  </form>
-</div>
+<ng-template [ngIf]="erreurMessage != ''">
+  <div class="alert alert-danger text-center col-6 offset-3">{{erreurMessage}}</div>
+</ng-template>
+<form [formGroup]="searchForm" (ngSubmit)="filterSearch()" class="row justify-content-center">
+  <div class="col-auto ">
+    <label for="" class="form-label mt-2">Search By:</label>
+  </div>
+  <div class="col-auto">
+    <select class="form-select" name="searchMethod" id="searchMethod" formControlName="searchMethod">
+      <option selected value="getAll">Get All:</option>
+      <option selected value="getById">Get By Id:</option>
+      <option value="getByName">Get By Name:</option>
+    </select>
+  </div>
+  <div class="col-auto">
+    <input id="searchValue" name="searchValue" type="text" class="form-control" formControlName="searchValue">
+  </div>
+  <div class="col-auto">
+    <app-button text="Search" (btnClick)="filterSearch()"></app-button>
+  </div>
+</form>

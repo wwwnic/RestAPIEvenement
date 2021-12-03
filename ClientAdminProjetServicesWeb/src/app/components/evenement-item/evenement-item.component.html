@@ -1,72 +1,64 @@
-<div class="container">
-  <div class="row justify-content-begin ">
-    <div class="col-md-6 col-sm-12 col-lg-6 p-3 ">
-      <div class=" border border-primary rounded p-lg-4 p-3 mb-3">
-        <div class="row">
-          <div class="text-begin col-3 col-lg-3">
-            <p>Event Id:</p>
-          </div>
-          <div class="text-begin col-1 col-lg-1">
-            <p>{{evenement.idEvenement}}</p>
-          </div>
-          <div class="text-end text-lg-begin col-2 col-lg-1 offset-3 offset-lg-4 ">
-            <button (click)="visit(evenement)" class="btn btn-primary">
-              <i class="bi bi-folder-plus"></i>
-            </button>
-          </div>
-          <div class="text-begin  col-2 col-lg-1">
-            <button (click)="openUpdateModal(evenement)" class="btn btn-primary">
-              <i class="bi bi-pen"></i>
-            </button>
-          </div>
-          <div class="text-begin col-2 col-lg-1">
-            <button (click)="openDeleteModal(evenement)" class="btn btn-primary" data-bs-toggle="modal"
-              data-bs-target="#delete">
-              <i class="bi bi-trash2-fill"></i>
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text-begin col-6">
-            <p>Nom :</p>
-          </div>
-          <div class="text-end col-6 ">
-            <p>{{evenement.nomEvenement}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text-begin col-3">
-            <p>Location :</p>
-          </div>
-          <div class="text-end col-9">
-            <p>{{evenement.location}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text-begin col-6">
-            <p>Date :</p>
-          </div>
-          <div class="text-end col-6">
-            <p>{{evenement.date}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text-begin col-6">
-            <p>Organisateur :</p>
-          </div>
-          <div class="text-end col-6">
-            <p>{{evenement.idOrganisateur}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text-begin col-6">
-            <p>Description :</p>
-          </div>
-          <div class="text-end col-6">
-            <p>{{evenement.description}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <div class="text-begin col-3 col-lg-3">
+    <p>Event Id:</p>
+  </div>
+  <div class="text-begin col-1 col-lg-1">
+    <p>{{evenement.idEvenement}}</p>
+  </div>
+  <div class="text-end text-lg-begin col-2 col-lg-1 offset-3 offset-lg-4 ">
+    <button (click)="visit(evenement)" class="btn btn-primary">
+      <i class="bi bi-folder-plus"></i>
+    </button>
+  </div>
+  <div class="text-begin  col-2 col-lg-1">
+    <button (click)="openUpdateModal(evenement)" class="btn btn-primary">
+      <i class="bi bi-pen"></i>
+    </button>
+  </div>
+  <div class="text-begin col-2 col-lg-1">
+    <button (click)="openDeleteModal(evenement)" class="btn btn-primary" data-bs-toggle="modal"
+      data-bs-target="#delete">
+      <i class="bi bi-trash2-fill"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Nom :</p>
+  </div>
+  <div class="text-end col-6 ">
+    <p>{{evenement.nomEvenement}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-3">
+    <p>Location :</p>
+  </div>
+  <div class="text-end col-9">
+    <p>{{evenement.location}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Date :</p>
+  </div>
+  <div class="text-end col-6">
+    <p>{{evenement.date}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Organisateur :</p>
+  </div>
+  <div class="text-end col-6">
+    <p>{{evenement.idOrganisateur}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Description :</p>
+  </div>
+  <div class="text-end col-6">
+    <p>{{evenement.description}}</p>
   </div>
 </div>

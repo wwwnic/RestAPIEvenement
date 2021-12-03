@@ -1,6 +1,17 @@
 <section class="p-5">
-  <app-search-bar-utilisateur (searchUtilisateurs)="filterUtilisateurs($event)"></app-search-bar-utilisateur>
-  <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur"
-    (update)="updateUtilisateur($event)" (delete)="deleteUtilisateur($event)">
-  </app-utilisateur-item>
+  <div class="container p-3">
+    <div class="row">
+      <app-search-bar-utilisateur [ngClass]="'col-lg-10 offset-lg-1 border border-primary rounded p-3'"
+        (searchUtilisateurs)="filterUtilisateurs($event)">
+      </app-search-bar-utilisateur>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <app-utilisateur-item [ngClass]="'col-md-6 col-sm-12 col-lg-5 border border-primary rounded p-lg-4 p-3 mb-3 mr-2'"
+        *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur" (update)="updateUtilisateur($event)"
+        (delete)="deleteUtilisateur($event)">
+      </app-utilisateur-item>
+    </div>
+  </div>
 </section>
