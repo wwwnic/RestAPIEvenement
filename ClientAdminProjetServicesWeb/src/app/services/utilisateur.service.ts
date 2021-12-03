@@ -7,7 +7,8 @@ import { DeleteKey } from '../entities/deleteKey';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'ApiKey': '9c9eeb7b-7b3f-439f-aadc-586cb0b8a265'
   })
 }
 
@@ -15,19 +16,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UtilisateurService {
-  private apiUrl = 'http://localhost:52871/api/Utilisateur';
+  private apiUrl = 'https://localhost:44312/api/Utilisateur';
 
   constructor(private http: HttpClient) { }
 
   doLogin(logInfo: LoginInfo): Observable<Utilisateur> {
     const tempUrl = `${this.apiUrl}/Login`
     var utilisateur = { nomUtilisateur: logInfo.nomUtilisateur, motDePasse: logInfo.password };
-    return this.http.post<Utilisateur>(tempUrl, utilisateur);
+    return this.http.post<Utilisateur>(tempUrl, utilisateur, httpOptions);
   }
 
   getAll(): Observable<Utilisateur[]> {
     const tempUrl = `${this.apiUrl}/GetAll`;
-    return this.http.get<Utilisateur[]>(tempUrl);
+    return this.http.get<Utilisateur[]>(tempUrl, httpOptions);
   }
 
   updateUser(user: Utilisateur): Observable<Utilisateur> {
@@ -42,12 +43,12 @@ export class UtilisateurService {
 
   getAllUtuilisateursByName(name: string): Observable<Utilisateur[]> {
     const tempUrl = `${this.apiUrl}/GetByName?name=${name}`;
-    return this.http.get<Utilisateur[]>(tempUrl);
+    return this.http.get<Utilisateur[]>(tempUrl, httpOptions);
   }
 
   getUtilisateurById(id: number): Observable<Utilisateur> {
     const tempUrl = `${this.apiUrl}/GetById?id=${id}`;
-    return this.http.get<Utilisateur>(tempUrl);
+    return this.http.get<Utilisateur>(tempUrl, httpOptions);
   }
 
 }

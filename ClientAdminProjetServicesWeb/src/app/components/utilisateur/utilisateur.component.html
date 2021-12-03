@@ -1,7 +1,4 @@
 <section class="p-5">
-  <!-- <p *ngFor="let utilisateur of utilisateurs"> {{utilisateur.idUtilisateur}}</p> -->
-  <!-- <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur"> -->
-
   <app-search-bar-utilisateur (searchUtilisateurs)="filterUtilisateurs($event)"></app-search-bar-utilisateur>
   <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur"
     (update)="updateUtilisateur($event)" (delete)="deleteUtilisateur($event)">

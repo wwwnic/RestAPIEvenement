@@ -5,17 +5,17 @@ import { Evenement } from 'src/app/entities/Evenement';
 import { ModalUpdateEvenementComponent } from '../modal-update-evenement/modal-update-evenement.component';
 import { ModalDeleteEvenementComponent } from '../modal-delete-evenement/modal-delete-evenement.component';
 import { DeleteKey } from 'src/app/entities/deleteKey';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-evenement-item',
   templateUrl: './evenement-item.component.html',
   styleUrls: ['./evenement-item.component.css']
 })
 export class EvenementItemComponent implements OnInit {
-  @Output() consult: EventEmitter<Evenement> = new EventEmitter();
   @Output() update: EventEmitter<Evenement> = new EventEmitter();
   @Output() delete: EventEmitter<DeleteKey> = new EventEmitter();
   @Input() evenement!: Evenement;
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -40,5 +40,7 @@ export class EvenementItemComponent implements OnInit {
     });
   }
 
-  visit(evenement: Evenement) { }
+  visit(evenement: Evenement): void {
+    this.router.navigate([`/evenement/${evenement.idEvenement}`]);
+  }
 }

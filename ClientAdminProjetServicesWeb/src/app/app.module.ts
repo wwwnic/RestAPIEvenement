@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchBarUtilisateurComponent } from './components/search-bar-utilisateur/search-bar-utilisateur.component';
 import { SearchBarEvenementComponent } from './components/search-bar-evenement/search-bar-evenement.component';
 import { UtilisateurDetailComponent } from './components/utilisateur-detail/utilisateur-detail.component';
+import { EvenementDetailComponent } from './components/evenement-detail/evenement-detail.component';
 
 
 
@@ -39,6 +40,7 @@ import { UtilisateurDetailComponent } from './components/utilisateur-detail/util
     SearchBarUtilisateurComponent,
     SearchBarEvenementComponent,
     UtilisateurDetailComponent,
+    EvenementDetailComponent,
   ],
   imports: [
     BrowserModule,
