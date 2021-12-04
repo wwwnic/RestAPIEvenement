@@ -22,8 +22,6 @@ import { UtilisateurDetailComponent } from './components/utilisateur-detail/util
 import { EvenementDetailComponent } from './components/evenement-detail/evenement-detail.component';
 import { CommentaireItemComponent } from './components/commentaire-item/commentaire-item.component';
 import { ModalDeleteCommentaireComponent } from './components/modal-delete-commentaire/modal-delete-commentaire.component';
-import { UtilisateurItemDetailComponent } from './componenets/utilisateur-item-detail/utilisateur-item-detail.component';
-import { EvenementItemDetailComponent } from './components/evenement-item-detail/evenement-item-detail.component';
 
 
 
@@ -46,9 +44,7 @@ import { EvenementItemDetailComponent } from './components/evenement-item-detail
     UtilisateurDetailComponent,
     EvenementDetailComponent,
     CommentaireItemComponent,
-    ModalDeleteCommentaireComponent,
-    UtilisateurItemDetailComponent,
-    EvenementItemDetailComponent,
+    ModalDeleteCommentaireComponent
   ],
   imports: [
     BrowserModule,
