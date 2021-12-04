@@ -20,6 +20,10 @@ import { SearchBarUtilisateurComponent } from './components/search-bar-utilisate
 import { SearchBarEvenementComponent } from './components/search-bar-evenement/search-bar-evenement.component';
 import { UtilisateurDetailComponent } from './components/utilisateur-detail/utilisateur-detail.component';
 import { EvenementDetailComponent } from './components/evenement-detail/evenement-detail.component';
+import { CommentaireItemComponent } from './components/commentaire-item/commentaire-item.component';
+import { ModalDeleteCommentaireComponent } from './components/modal-delete-commentaire/modal-delete-commentaire.component';
+import { UtilisateurItemDetailComponent } from './componenets/utilisateur-item-detail/utilisateur-item-detail.component';
+import { EvenementItemDetailComponent } from './components/evenement-item-detail/evenement-item-detail.component';
 
 
 
@@ -41,6 +45,10 @@ import { EvenementDetailComponent } from './components/evenement-detail/evenemen
     SearchBarEvenementComponent,
     UtilisateurDetailComponent,
     EvenementDetailComponent,
+    CommentaireItemComponent,
+    ModalDeleteCommentaireComponent,
+    UtilisateurItemDetailComponent,
+    EvenementItemDetailComponent,
   ],
   imports: [
     BrowserModule,

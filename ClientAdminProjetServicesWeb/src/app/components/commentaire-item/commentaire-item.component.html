@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="text-begin col-auto">
+    <p>Commentaire Id:</p>
+  </div>
+  <div class="text-begin col-auto">
+    <p>{{commentaire.idCommentaire}}</p>
+  </div>
+  <div class="text-end offset-3 offset-sm-5 offset-md-3 offset-lg-5 col-auto">
+    <button (click)="openDeleteModal(commentaire)" class="btn btn-warning">
+      <i class="bi bi-trash2-fill"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Id Evenement:</p>
+  </div>
+  <div class="text-end col-6 ">
+    <p>{{commentaire.idEvenement}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-3">
+    <p>idUtilisateur:</p>
+  </div>
+  <div class="text-end col-9">
+    <p>{{commentaire.idUtilisateur}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Date:</p>
+  </div>
+  <div class="text-end col-6">
+    <p>{{commentaire.date}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="text-begin col-6">
+    <p>Description:</p>
+  </div>
+  <div class="text-end col-6">
+    <p>{{commentaire.texte}}</p>
+  </div>
+</div>

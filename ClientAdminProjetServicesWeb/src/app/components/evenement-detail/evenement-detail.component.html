@@ -1,1 +1,17 @@
-<app-evenement-item [evenement]="evenement"></app-evenement-item>
+<section class="p-5">
+  <div class="container p-3">
+    <div class="row justify-content-begin">
+      <app-evenement-item [ngClass]="'col-12 offset-lg-1 col-lg-10 border border-primary rounded p-3 mb-3 mr-2'"
+        [evenement]="evenement">
+      </app-evenement-item>
+      <div class="container">
+        <div class="row justify-content-center">
+          <app-commentaire-item
+            [ngClass]="'col-md-6 col-sm-12 col-lg-5 border border-warning rounded p-lg-4 p-3 mb-3 mr-2'"
+            *ngFor="let commentaire of commentaires" [commentaire]="commentaire">
+          </app-commentaire-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
