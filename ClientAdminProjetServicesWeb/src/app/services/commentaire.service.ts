@@ -24,7 +24,7 @@ export class CommentaireService {
     return this.http.get<Commentaire[]>(tempUrl, httpOptions);
   }
 
-  deleteUser(deleteKey: DeleteKey): Observable<Commentaire> {
+  deleteCommentaire(deleteKey: DeleteKey): Observable<Commentaire> {
     const tempUrl = `${this.apiUrl}/Delete/${deleteKey.key}?id=${deleteKey.id}`
     return this.http.delete<Commentaire>(tempUrl, httpOptions);
   }
