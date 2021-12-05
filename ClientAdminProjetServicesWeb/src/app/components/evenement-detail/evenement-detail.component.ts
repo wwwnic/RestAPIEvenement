@@ -3,10 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Commentaire } from 'src/app/entities/Commentaire';
 import { Evenement } from 'src/app/entities/Evenement';
-import { ModalDeleteCommentaireComponent } from '../modal-delete-commentaire/modal-delete-commentaire.component';
 import { EvenementService } from 'src/app/services/evenement.service';
 import { CommentaireService } from 'src/app/services/commentaire.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteKey } from 'src/app/entities/deleteKey';
 
 @Component({
