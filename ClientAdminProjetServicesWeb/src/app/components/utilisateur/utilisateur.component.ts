@@ -30,7 +30,6 @@ export class UtilisateurComponent implements OnInit {
   }
 
   deleteUtilisateur(dk: DeleteKey) {
-    //UI NOT UPDATING AFTER DELETION OF USER
     console.log(this.utilisateurs.filter(u => u.idUtilisateur === dk.id));
     this.utilisateurService.deleteUser(dk).subscribe(() => this.utilisateurs = this.utilisateurs.filter(u => u.idUtilisateur !== dk.id));
   }

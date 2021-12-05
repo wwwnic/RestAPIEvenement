@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Evenement } from '../entities/Evenement';
+import { DeleteKey } from '../entities/deleteKey';
 import { Commentaire } from '../entities/Commentaire';
 
 const httpOptions = {
@@ -22,5 +22,10 @@ export class CommentaireService {
   getAllByEvenementId(id: number): Observable<Commentaire[]> {
     const tempUrl = `${this.apiUrl}/GetByEvenement?id=${id}`;
     return this.http.get<Commentaire[]>(tempUrl, httpOptions);
+  }
+
+  deleteCommentaire(deleteKey: DeleteKey): Observable<Commentaire> {
+    const tempUrl = `${this.apiUrl}/Delete/${deleteKey.key}?id=${deleteKey.id}`
+    return this.http.delete<Commentaire>(tempUrl, httpOptions);
   }
 }

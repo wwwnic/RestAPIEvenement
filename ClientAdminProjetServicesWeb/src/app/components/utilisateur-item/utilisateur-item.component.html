@@ -5,17 +5,13 @@
   <div class="text-begin col-1 col-lg-1">
     <p>{{utilisateur.idUtilisateur}}</p>
   </div>
-  <div class="text-end text-lg-begin col-2 col-lg-1 offset-3 offset-lg-6 ">
+  <div class="btn-group col-2 col-lg-4 offset-3 offset-lg-6 float-right">
     <button (click)="visit(utilisateur)" class="btn btn-primary">
       <i class="bi bi-folder-plus"></i>
     </button>
-  </div>
-  <div class="text-begin  col-2 col-lg-1">
     <button (click)="openUpdateModal(utilisateur)" class=" btn btn-primary">
       <i class="bi bi-pen"></i>
     </button>
-  </div>
-  <div class=" text-begin col-2 col-lg-1">
     <button (click)="openDeleteModal(utilisateur)" class="btn btn-primary">
       <i class="bi bi-trash2-fill"></i>
     </button>

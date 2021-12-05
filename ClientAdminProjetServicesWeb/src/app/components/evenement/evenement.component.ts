@@ -23,10 +23,6 @@ export class EvenementComponent implements OnInit {
     this.evenementService.getAll().subscribe((evenements) => (this.evenements = evenements));
   }
 
-  consulterEvenement(evenement: Evenement) {
-    console.log(evenement);
-  }
-
   updateEvenement(evenement: Evenement) {
     this.evenementService.updateEvenement(evenement).subscribe();
   }

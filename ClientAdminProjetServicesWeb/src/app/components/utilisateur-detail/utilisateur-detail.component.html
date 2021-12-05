@@ -1,8 +1,18 @@
-<div class="container">
-  <div class="row justify-content-begin">
-    <app-utilisateur-item [utilisateur]="user">
-    </app-utilisateur-item>
-    <app-evenement-item *ngFor="let evenement of evenements" [evenement]="evenement">
-    </app-evenement-item>
+<section class="p-5">
+  <div class="container">
+    <div class="row justify-content-begin">
+      <app-utilisateur-item [ngClass]="'col-12 offset-lg-1 col-lg-10 border border-primary rounded p-3 mb-3 mr-2'"
+        [utilisateur]="user" (update)="updateUtilisateur($event)" (delete)="deleteUtilisateur($event)">
+      </app-utilisateur-item>
+      <div class="container">
+        <div class="row justify-content-center">
+          <app-evenement-item
+            [ngClass]="'col-md-6 col-sm-12 col-lg-5 border border-primary rounded p-lg-4 p-3 mb-3 mr-2'"
+            *ngFor="let evenement of evenements" [evenement]="evenement" (update)="updateEvenement($event)"
+            (delete)="deleteEvenement($event)">
+          </app-evenement-item>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
